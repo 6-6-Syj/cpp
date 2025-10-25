@@ -28,27 +28,28 @@ CXXFLAGS = -Wall -Wextra -std=c++98
 #------------------------------------------------#
 all: $(NAME)
 
-$(NAME): $(OBJ) Makefile
-	@echo "\n$(MAGENTA)$(BOLD)💻 Compiling executable...$(RESET)"
-	@$(CXX) $(OBJ) -o $@
-	@echo "$(GREEN)$(BOLD)✅ Compilation successfull !$(RESET)"
-
-$(OBJ_DIR)%.o: %.cpp Makefile | $(OBJ_DIR)
-	@echo " → Compiling $(YELLOW) $< $(RESET)"
-	@$(CXX) $(CXXFLAGS) -MMD -MP -c $< -o $@
-
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
+$(NAME): $(OBJ) Makefile
+	@echo "\n$(B_BLUE)➤ Building $(NAME)$(RESET)$(BLUE)...$(RESET)"
+	@$(CXX) $(OBJ) -o $@
+	@echo "$(B_CYAN)   → ./$(NAME)$(RESET)\n"
+
+$(OBJ_DIR)%.o: %.cpp Makefile | $(OBJ_DIR)
+	@echo "$(B_BLUE)➤ Compiling$(RESET)$(BLUE)...$(RESET)"
+	@echo "$(B_YELLOW)   → $<$(RESET)"
+	@$(CXX) $(CXXFLAGS) -MMD -MP -c $< -o $@
+
 clean:
+	@echo "$(B_RED)➤ Cleaning$(RESET)$(RED)...$(RESET)"
 	@rm -rf $(OBJ_DIR)
-	@echo "$(MAGENTA)$(BOLD)\n🧹 Cleaning up project files...$(RESET)"
-	@echo "$(CYAN)    └─ Cleaned build directory: $(OBJ_DIR)\n$(RESET)"
+	@echo "$(B_GREEN)   ✓ Clean$(RESET)\n"
 
 fclean: clean
 	@rm -rf $(NAME)
-	@echo "$(GREEN)$(BOLD)🗑️  Full clean-up completed:$(RESET)"
-	@echo "$(CYAN)    └─ Executable removed: ./$(NAME)\n$(RESET)"
+	@echo "$(B_RED)➤ Full clean$(RESET)"
+	@echo "$(B_GREEN)   ✓ All removed$(RESET)\n"
 
 re: fclean all
 
@@ -57,9 +58,20 @@ re: fclean all
 #------------------------------------------------#
 #					COLORS						 #
 #------------------------------------------------#
-GREEN	= \033[0;32m
-YELLOW	= \033[1;33m
-CYAN	= \033[0;36m
-MAGENTA	= \033[0;35m
-BOLD    = \033[1m
-RESET   = \033[0m
+
+BOLD    	= \033[1m
+RESET   	= \033[0m
+
+B_RED 		= \033[1;31m
+B_GREEN 	= \033[1;32m
+B_YELLOW	= \033[1;33m
+B_BLUE 		= \033[1;34m
+B_MAGENTA 	= \033[1;35m
+B_CYAN 		= \033[1;36m
+
+RED 		= \033[0;31m
+GREEN		= \033[0;32m
+YELLOW		= \033[0;33m
+BLUE		= \033[0;34m
+MAGENTA		= \033[0;35m
+CYAN		= \033[0;36m
