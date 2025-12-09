@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/23 22:02:51 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/09 16:51:48 by jmagand          ###   ########.fr       */
+/*   Created: 2025/12/09 17:42:57 by jmagand           #+#    #+#             */
+/*   Updated: 2025/12/09 17:42:58 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
-int main(int ac, char **av)
-{
-    int i, j;
-    char c;
+# include "Contact.hpp"
 
-    if (ac == 1)
-    {
-        std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-        return (0);
-    }
-	i = j = 0;
-    while (++i < ac)
-    {
-		j = 0;
-        while (av[i][j])
-        {
-            c = toupper(av[i][j++]);
-        	std::cout << c;
-        }
-    }
-    std::cout << std::endl;
-    return (0);
-}
+class PhoneBook {
+private:
+    Contact _contacts[8];
+    int     _count;
+    int     _nextIndex;
+
+public:
+    PhoneBook();
+    void addContact();
+    void searchContact() const;
+};
+
+#endif
