@@ -15,8 +15,6 @@ OBJ_DIR = .build/
 OBJ = $(OBJ_DIR)$(SRC:.cpp=.o)
 DEP = $(OBJ_DIR)$(SRC:.cpp=.d)
 
--include $(DEP)
-
 #------------------------------------------------#
 #					FLAGS						 #
 #------------------------------------------------#
@@ -40,6 +38,8 @@ $(OBJ_DIR)%.o: %.cpp Makefile | $(OBJ_DIR)
 	@echo "$(B_BLUE)➤ Compiling$(RESET)$(BLUE)...$(RESET)"
 	@echo "$(B_YELLOW)   → $<$(RESET)"
 	@$(CXX) $(CXXFLAGS) -MMD -MP -c $< -o $@
+
+-include $(DEP)
 
 clean:
 	@echo "$(B_RED)➤ Cleaning$(RESET)$(RED)...$(RESET)"
