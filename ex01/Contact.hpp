@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 17:41:08 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/09 18:24:50 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/10 13:43:04 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CONTACT_HPP
 
 # include <string>
+# include <iostream>
 
 class Contact {
 private:
@@ -25,7 +26,7 @@ private:
 
 public:
     Contact();
-    void setFromInput();
+    bool setFromInput();
     void printShort(int index) const;
     void printFull() const;
 };

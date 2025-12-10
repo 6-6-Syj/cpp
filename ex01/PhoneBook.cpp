@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 17:43:18 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/09 17:43:41 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/10 15:23:20 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-#include <iostream>
 #include <iomanip>
 
 PhoneBook::PhoneBook() : _count(0), _nextIndex(0) {}
 
-void PhoneBook::addContact() {
+bool PhoneBook::addContact() {
     if (std::cin.eof())
-        return;
-    _contacts[_nextIndex].setFromInput();
-    if (_count < 8)
-        _count++;
-    _nextIndex = (_nextIndex + 1) % 8;
+        return (false);
+    if (!this->_contacts[this->_nextIndex].setFromInput())
+        return (false);
+    if (this->_count < 8)
+        this->_count++;
+    this->_nextIndex = (this->_nextIndex + 1) % 8;
+    return (true);
 }
 
-void PhoneBook::searchContact() const {
-    if (_count == 0) {
+bool PhoneBook::searchContact() const {
+    if (this->_count == 0) {
         std::cout << "PhoneBook is empty." << std::endl;
-        return;
+        return (true);
     }
 
     std::cout << std::setw(10) << "Index"     << "|"
@@ -36,19 +37,20 @@ void PhoneBook::searchContact() const {
               << std::setw(10) << "Last name" << "|"
               << std::setw(10) << "Nickname"  << std::endl;
 
-    for (int i = 0; i < _count; i++)
-        _contacts[i].printShort(i);
+    for (int i = 0; i < this->_count; i++)
+        this->_contacts[i].printShort(i);
 
-    std::cout << "Enter index: ";
     std::string line;
-    if (!std::getline(std::cin, line) || line.size() != 1 || line[0] < '0' || line[0] > '7') {
-        std::cout << "Invalid index." << std::endl;
-        return;
-    }
     int idx = line[0] - '0';
-    if (idx < 0 || idx >= _count) {
-        std::cout << "Invalid index." << std::endl;
-        return;
-    }
-    _contacts[idx].printFull();
+    
+    do {
+        std::cout << "Enter index: ";
+        if (!std::getline(std::cin, line))
+            return (false);
+        idx = line[0] - '0';
+    } while ((idx < 0 || idx >= this->_count));
+    
+    this->_contacts[idx].printFull();
+    
+    return (true);
 }

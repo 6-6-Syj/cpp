@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 17:42:57 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/09 17:42:58 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/10 13:08:04 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ private:
 
 public:
     PhoneBook();
-    void addContact();
-    void searchContact() const;
+    bool addContact();
+    bool searchContact() const;
 };
 
 #endif

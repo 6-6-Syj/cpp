@@ -6,13 +6,11 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 16:13:14 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/09 18:27:33 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/10 13:40:49 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
 #include "PhoneBook.hpp"
-#include <iostream>
 
 int main() {
     PhoneBook    phonebook;
@@ -21,11 +19,15 @@ int main() {
     while (true) {
         std::cout << "Enter command (ADD, SEARCH, EXIT): ";
         if (!std::getline(std::cin, command))
-            break;
-        if (command == "ADD")
-            phonebook.addContact();
-        else if (command == "SEARCH")
-            phonebook.searchContact();
+            return (0);
+        if (command == "ADD") {
+            if (!phonebook.addContact())
+                break;
+        }
+        else if (command == "SEARCH") {
+            if (!phonebook.searchContact())
+                break;
+        }
         else if (command == "EXIT")
             break;
     }

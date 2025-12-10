@@ -1,45 +1,65 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/09 18:34:23 by jmagand           #+#    #+#             */
+/*   Updated: 2025/12/10 13:51:56 by jmagand          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Contact.hpp"
-#include <iostream>
 #include <iomanip>
 
 Contact::Contact() {}
 
-bool setInput(std::string s) {
-    return (s.size());
+static bool setInput(std::string s) {
+    if (s.size() > 0 && s.size() < 1024)
+        return (true);
+    return (false);
 }
 
-void Contact::setFromInput() {
+bool Contact::setFromInput() {
     std::string input;
     
     do {
         std::cout << "First name: ";
-        std::getline(std::cin, input);
+        if (!std::getline(std::cin, input))
+            return (false);
     } while (!setInput(input));
     this->_firstName = input;
     
     do {
         std::cout << "Last name: ";
-        std::getline(std::cin, input);
+        if (!std::getline(std::cin, input))
+            return (false);
     } while (!setInput(input));
     this->_lastName = input;
     
     do {
         std::cout << "Nickname: ";
-        std::getline(std::cin, input);
+        if (!std::getline(std::cin, input))
+            return (false);
     } while (!setInput(input));
     this->_nickname = input;
     
     do {
         std::cout << "Phone number: ";
-        std::getline(std::cin, input);
+        if (!std::getline(std::cin, input))
+            return (false);
     } while (!setInput(input));
     this->_phoneNumber = input;
     
     do {
         std::cout << "Darkest secret: ";
-        std::getline(std::cin, input);
+        if (!std::getline(std::cin, input))
+            return (false);
     } while (!setInput(input));
     this->_darkestSecret = input;
+
+    return (true);
 }
 
 static std::string truncateField(std::string s) {
@@ -50,9 +70,9 @@ static std::string truncateField(std::string s) {
 
 void Contact::printShort(int index) const {
     std::cout << std::setw(10) << index << "|"
-              << std::setw(10) << truncateField(this->_firstName) << "|"
-              << std::setw(10) << truncateField(this->_lastName)  << "|"
-              << std::setw(10) << truncateField(this->_nickname)  << std::endl;
+            << std::setw(10) << truncateField(this->_firstName) << "|"
+            << std::setw(10) << truncateField(this->_lastName)  << "|"
+            << std::setw(10) << truncateField(this->_nickname)  << std::endl;
 }
 
 void Contact::printFull() const {
