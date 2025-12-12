@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 18:29:02 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/12 13:39:21 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/12 13:53:49 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,11 @@ void	Account::displayStatus() const {
 }
 
 void	Account::_displayTimestamp() {
-	std::time_t seconds = std::time(NULL);
-	std::cout << "[" << seconds << "] ";
+	std::time_t now = std::time(NULL);
+	std::tm *info_t = std::localtime(&now);
+	char buffer[20];
+	std::strftime(buffer, sizeof(buffer), "%Y%m%d_%H%M%S", info_t);
+	std::cout << "[" << buffer << "] ";
 }
 
 bool	Account::makeWithdrawal(int withdrawal) {
