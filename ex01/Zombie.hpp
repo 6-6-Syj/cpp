@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 15:16:06 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/12 15:16:53 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/12 15:40:26 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ public:
 	Zombie(std::string name);
 	~Zombie();
 	std::string getName() const;
+	void 		setName(std::string name);
 	void 		announce() const;
 private:
 	std::string _name;
 };
 
-Zombie* newZombie(std::string name);
-void randomChump(std::string name);
+Zombie* 	zombieHorde(int N, std::string name);

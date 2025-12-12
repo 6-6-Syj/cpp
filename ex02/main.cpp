@@ -5,18 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/12 15:15:47 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/12 15:47:49 by jmagand          ###   ########.fr       */
+/*   Created: 2025/12/12 15:49:38 by jmagand           #+#    #+#             */
+/*   Updated: 2025/12/12 15:49:43 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-
-int main() {
-	Zombie* z;
-	
-	z = zombieHorde(5, "");
-	// zombieHorde(2, "toto");
-	// z = zombieHorde(3, "titi");
-	delete[]z;
-}

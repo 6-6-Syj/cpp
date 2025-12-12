@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:02:19 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/12 15:17:11 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/12 15:42:04 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ Zombie::~Zombie() {
 
 std::string	Zombie::getName() const {
 	return (_name);
+}
+
+void	Zombie::setName(std::string name) {
+	_name = name;
 }
 
 void	Zombie::announce() const {
