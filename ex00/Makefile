@@ -1,9 +1,11 @@
 #------------------------------------------------#
 #					FILES						 #
 #------------------------------------------------#
-NAME = account
-SRC = 	tests.cpp		\
-		Account.cpp 	\
+NAME = zombie
+SRC = 	main.cpp			\
+		Zombie.cpp			\
+		NewZombie.cpp 		\
+		RandomChump.cpp 	\
 
 #------------------------------------------------#
 #					DIRECTORY					 #
