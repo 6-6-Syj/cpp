@@ -19,7 +19,7 @@ DEP = $(addprefix $(OBJ_DIR), $(SRC:.cpp=.d))
 #					FLAGS						 #
 #------------------------------------------------#
 CXX = c++
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -MMD -MP
 
 #------------------------------------------------#
 #					RULES						 #
@@ -37,7 +37,7 @@ $(NAME): $(OBJ) Makefile
 $(OBJ_DIR)%.o: %.cpp Makefile | $(OBJ_DIR)
 	@echo "$(B_BLUE)➤ Compiling$(RESET)$(BLUE)...$(RESET)"
 	@echo "$(B_YELLOW)   → $<$(RESET)"
-	@$(CXX) $(CXXFLAGS) -MMD -MP -c $< -o $@
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 -include $(DEP)
 
