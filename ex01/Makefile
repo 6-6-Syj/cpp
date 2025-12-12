@@ -4,7 +4,7 @@
 NAME = zombie
 SRC = 	main.cpp			\
 		Zombie.cpp			\
-		zombieHorde.cpp		\
+		ZombieHorde.cpp		\
 
 #------------------------------------------------#
 #					DIRECTORY					 #
