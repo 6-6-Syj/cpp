@@ -6,20 +6,28 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 15:22:06 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/12 16:47:00 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/13 12:56:19 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
+#include <iostream>
 
-Zombie* zombieHorde(int N, std::string name) {
-	if (N < 1) {
-		return (NULL);
+Zombie *zombieHorde(int N, std::string name)
+{
+	Zombie *ptr = NULL;
+	if (N < 1 || N > 100001)
+	{
+		std::cout << "Please check the value" << std::endl;
+		return ptr;
 	}
-	Zombie* ptr = new Zombie[N];
-	for (int i = 0; i < N; i++) {
+	if (name.empty())
+		name = "Nobody";
+	ptr = new Zombie[N];
+	for (int i = 0; i < N; i++)
+	{
 		ptr[i].setName(name);
 		ptr[i].announce();
 	}
-	return (ptr);
+	return ptr;
 }

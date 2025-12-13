@@ -1,19 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RandomChump.cpp                                    :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/12 15:05:19 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/13 12:57:34 by jmagand          ###   ########.fr       */
+/*   Created: 2025/12/13 12:58:35 by jmagand           #+#    #+#             */
+/*   Updated: 2025/12/13 13:25:50 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <string>
 
-void randomChump(std::string name)
-{
-	Zombie z(name);
-	z.announce();
-}
+int main(ac, std::string **av)
