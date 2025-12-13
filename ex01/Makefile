@@ -1,7 +1,7 @@
 #------------------------------------------------#
 #					FILES						 #
 #------------------------------------------------#
-NAME = Zombies
+NAME = zombies
 SRC = 	main.cpp			\
 		Zombie.cpp			\
 		ZombieHorde.cpp		\

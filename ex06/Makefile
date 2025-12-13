@@ -1,11 +1,9 @@
 #------------------------------------------------#
 #					FILES						 #
 #------------------------------------------------#
-NAME = zombie
+NAME = harlFilter
 SRC = 	main.cpp			\
-		Zombie.cpp			\
-		NewZombie.cpp 		\
-		RandomChump.cpp 	\
+		Harl.cpp			\
 
 #------------------------------------------------#
 #					DIRECTORY					 #

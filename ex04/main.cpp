@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 12:58:35 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/13 15:34:12 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/13 15:56:36 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 #include <fstream>
 #include <string>
 
-std::string replaceStrings(std::string line, std::string s1, std::string s2)
+std::string replaceStrings(std::string line, const std::string& s1, const std::string& s2)
 {
-	std::size_t occurence;
+	std::size_t occurence = line.find(s1);
 
-	occurence = line.find(s1);
-	while (occurence!=std::string::npos)
+	while (occurence != std::string::npos)
 	{
 		line.replace(line.find(s1), s1.length(), s2);
 		occurence = line.find(s1);
@@ -48,16 +47,24 @@ int main(int ac, char **av)
 	if (!file.is_open())
 	{
 		std::cerr << "Failed to open \"" << av[1] << "\"" << std::endl;
+		file.close();
 		return 1;
 	}
 
 	std::string line;
 	std::ofstream replaced((filename + ".replace").c_str());
+	if (!replaced.is_open())
+	{
+		std::cerr << "Failed to open \"" << (filename + ".replace") << "\"" << std::endl;
+		file.close();
+		return 1;
+	}
+
 	while (std::getline(file, line))
 	{
 		replaced << replaceStrings(line, s1, s2) << std::endl;
 	}
-	
+
 	file.close();
 	replaced.close();
 	return 0;
