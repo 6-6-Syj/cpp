@@ -38,11 +38,3 @@ CPP
 	they must include all the dependencies they need. However, you must avoid the
 	problem of double inclusion by adding include guards. Otherwise, your grade will
 	be 0.
-
-• Namespaces, 
-• classes, 
-• member functions, 
-• stdio streams, 
-• initialization lists, 
-• static, 
-• const

@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 15:22:06 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/13 12:56:19 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/13 15:35:14 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Zombie *zombieHorde(int N, std::string name)
 	Zombie *ptr = NULL;
 	if (N < 1 || N > 100001)
 	{
-		std::cout << "Please check the value" << std::endl;
+		std::cerr << "Please check the value" << std::endl;
 		return ptr;
 	}
 	if (name.empty())
