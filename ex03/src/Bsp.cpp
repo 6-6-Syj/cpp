@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Bsp.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/15 19:58:58 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/17 11:56:18 by jmagand          ###   ########.fr       */
+/*   Created: 2025/12/17 17:23:18 by jmagand           #+#    #+#             */
+/*   Updated: 2025/12/17 17:52:48 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-
-class Fixed
+bool bsp(Point const a, Point const b, Point const c, Point const point)
 {
-private:
-	int _fixedPointValue;
-	static const int _fractionalBits;
-
-public:
-	Fixed();
-	Fixed(const Fixed &other);
-	Fixed &operator=(const Fixed &other);
-	~Fixed();
-	int getRawBits() const;
-	void setRawBits(int const raw);
-};
+	if ()
+		return true;
+	return false;
+}

@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/15 19:58:58 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/17 11:56:18 by jmagand          ###   ########.fr       */
+/*   Created: 2025/12/17 17:24:56 by jmagand           #+#    #+#             */
+/*   Updated: 2025/12/17 17:51:07 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-class Fixed
+#include "Fixed.hpp"
+
+class Point 
 {
 private:
-	int _fixedPointValue;
-	static const int _fractionalBits;
-
+	const Fixed _x;
+	const Fixed _y;
 public:
-	Fixed();
-	Fixed(const Fixed &other);
-	Fixed &operator=(const Fixed &other);
-	~Fixed();
-	int getRawBits() const;
-	void setRawBits(int const raw);
+	Point();
+	Point(const Fixed o1, const Fixed o2);
+	Point(const Point &other);
+	Point &operator=(const Point& other);
+	~Point();
 };
