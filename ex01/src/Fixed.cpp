@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 19:59:19 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/16 00:13:06 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/17 10:54:53 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Fixed::Fixed()
 Fixed::Fixed(const int val)
 {
 	std::cout << "Int constructor called" << std::endl;
-	this->_value = val;
+	this->_value = val << _fractionalBits;
 }
 
 Fixed::Fixed(const float val)
