@@ -1,33 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Point.hpp                                          :+:      :+:    :+:   */
+/*   bsp.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/17 17:24:56 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/18 13:36:26 by jmagand          ###   ########.fr       */
+/*   Created: 2025/12/18 12:03:09 by jmagand           #+#    #+#             */
+/*   Updated: 2025/12/18 12:04:53 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "Point.hpp"
 
-#include "Fixed.hpp"
-
-class Point
-{
-private:
-	const Fixed _x;
-	const Fixed _y;
-
-public:
-	Point();
-	Point(const Fixed &o1, const Fixed &o2);
-	Point(const Point &other);
-	Point &operator=(const Point &other);
-	~Point();
-
-	/* Getters */
-	Fixed getX() const;
-	Fixed getY() const;
-};
+bool	bsp(Point const a, Point const b, Point const c, Point const point);

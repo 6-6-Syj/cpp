@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 11:59:00 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/17 17:18:17 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/18 13:01:40 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,43 +22,16 @@ private:
 
 public:
 	Fixed();
-	Fixed(const int val);
 	Fixed(const float val);
 	Fixed(const Fixed &other);
-	Fixed &operator=(const Fixed &other);
+	Fixed &operator=(Fixed &other);
 	~Fixed();
 
 	/* Getters - Setters */
 	int getRawBits() const;
 	void setRawBits(const int raw);
 
-	/* Comparison operators */
-	bool operator<(const Fixed &other) const;
-	bool operator>(const Fixed &other) const;
-	bool operator<=(const Fixed &other) const;
-	bool operator>=(const Fixed &other) const;
-	bool operator==(const Fixed &other) const;
-	bool operator!=(const Fixed &other) const;
-
-	/* Arithmetic operators */
-	Fixed operator+(const Fixed &other) const;
-	Fixed operator-(const Fixed &other) const;
-	Fixed operator/(const Fixed &other) const;
-	Fixed operator*(const Fixed &other) const;
-
-	/* increment and decrement operators */
-	Fixed& operator++(); 		// pre
-	Fixed operator++(int x); 	// post
-	Fixed& operator--(); 		// pre
-	Fixed operator--(int x); 	// post
-
-	/* utils */
-	const static Fixed& min(const Fixed& other1, const Fixed& other2);
-	const static Fixed& max(const Fixed& other1, const Fixed& other2);
-	static Fixed& min(Fixed& other1, Fixed& other2);
-	static Fixed& max(Fixed& other1, Fixed& other2);
+	Fixed operator-(const Fixed &other);
+	Fixed operator*(const Fixed &other);
 	float toFloat() const;
-	int toInt() const;
 };
-
-std::ostream &operator<<(std::ostream &out, const Fixed &fixed);

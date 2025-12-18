@@ -11,6 +11,8 @@ OBJ_DIR		:= .build/
 NAME	= 	bsp
 SRC		= 	main.cpp			\
 			Fixed.cpp			\
+			Point.cpp			\
+			bsp.cpp				\
 
 SRCS	= 	$(addprefix $(SRC_DIR), $(SRC))
 
