@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 13:12:37 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/19 16:23:54 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/19 16:49:34 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 class ClapTrap
 {
 private:
-	static const unsigned int MAX_HP;
 	std::string _name;
 	unsigned int _hp;
 	unsigned int _energy;

@@ -6,74 +6,66 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 13:13:31 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/19 20:51:41 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/19 21:44:04 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 #include <iostream>
 
-void testSection(const std::string &title)
-{
-	std::cout << "\n\033[1;36m" << title << "\033[0m" << std::endl;
-}
-
-void testScavConstruction()
-{
-	testSection("=== SCAVTRAP CONSTRUCTION TEST ===");
-
+void testFragConstruction()
+{	
 	std::cout << "\n1. Default construction:" << std::endl;
-	ScavTrap scavDefault;
-
+	FragTrap fragDefault;
+	
 	std::cout << "\n2. Named construction:" << std::endl;
-	ScavTrap scavNamed("Scavvy");
-
+	FragTrap fragNamed("Fragy");
+	
 	std::cout << "\n3. Copy construction:" << std::endl;
-	ScavTrap scavCopied(scavNamed);
-
+	FragTrap fragCopied(fragNamed);
+	
 	std::cout << "\n4. Assignment operator:" << std::endl;
-	ScavTrap scavAssigned;
-	scavAssigned = scavNamed;
+	FragTrap fragAssigned;
+	fragAssigned = fragNamed;
 
 	std::cout << "\n5. Destruction order verification:" << std::endl;
 	{
-		std::cout << "Creating ScavTrap inside scope..." << std::endl;
-		ScavTrap scopedScav("ScopedScav");
+		std::cout << "Creating FragTrap inside scope..." << std::endl;
+		FragTrap scopedFrag("ScopedFrag");
 		std::cout << "Leaving scope..." << std::endl;
 	}
-
-	std::cout << "\nScavTraps about to be destroyed (note reverse order):" << std::endl;
+	
+	std::cout << "\nFragTraps about to be destroyed:" << std::endl;
 }
 
-void testScavEdgeCases()
+void testFragEdgeCases()
 {
-	testSection("=== SCAVTRAP EDGE CASES ===");
-
-	std::cout << "1. Maximum damage test:" << std::endl;
-	ScavTrap toughScav("Tough");
-	toughScav.takeDamage(99);
-	toughScav.attack("Enemy");
-	toughScav.guardGate();
-	toughScav.takeDamage(1);
+	std::cout << "\n1. Maximum damage test:" << std::endl;
+	FragTrap toughFrag("Tough");
+	toughFrag.takeDamage(99);
+	toughFrag.attack("Enemy");
+	toughFrag.highFivesGuys();
+	toughFrag.takeDamage(1);
 
 	std::cout << "\n2. Repair at max HP:" << std::endl;
-	ScavTrap healthyScav("Healthy");
-	healthyScav.beRepaired(10);
-	healthyScav.beRepaired(10);
+	FragTrap healthyFrag("Healthy");
+	healthyFrag.takeDamage(9);
+	healthyFrag.beRepaired(3);
+	healthyFrag.beRepaired(10000000);
 
-	std::cout << "\n3. Mixed ClapTrap and ScavTrap:" << std::endl;
+	std::cout << "\n3. Mixed ClapTrap and FragTrap:" << std::endl;
 	ClapTrap clap("Clapper");
-	ScavTrap scav("Scavver");
+	FragTrap Frag("Frager");
 
 	clap.attack("Target1");
-	scav.attack("Target2");
-	scav.guardGate();
+	Frag.attack("Target2");;
 }
 
 int main()
 {
-	testScavConstruction();
-	testScavEdgeCases();
+	testFragConstruction();
+	testFragEdgeCases();
 	return 0;
 }

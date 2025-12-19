@@ -1,51 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/19 13:12:37 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/19 22:51:22 by jmagand          ###   ########.fr       */
+/*   Created: 2025/12/19 15:24:43 by jmagand           #+#    #+#             */
+/*   Updated: 2025/12/19 20:54:55 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#define RED "\033[31m"
-#define RST "\033[0m"
-#define BLUE "\033[34m"
+#include "ClapTrap.hpp"
 
-#include <string>
-
-class ClapTrap
+class ScavTrap : public ClapTrap
 {
-protected:
-	std::string _name;
-	unsigned int _hp;
-	unsigned int _energy;
-	int _ad;
-
 public:
-	/* Orthodox canonical form */
-	ClapTrap();
-	ClapTrap(std::string _name);
-	ClapTrap(const ClapTrap &other);
-	ClapTrap &operator=(const ClapTrap &other);
-	~ClapTrap();
+	ScavTrap();
+	ScavTrap(std::string name);
+	ScavTrap(const ScavTrap &other);
+	ScavTrap &operator=(const ScavTrap &other);
+	~ScavTrap();
 
-	/* Operator */
-	ClapTrap &operator--();
-
-	/* Getters */
-	std::string getName();
-	unsigned int getHp();
-	unsigned int getEnergy();
-	int getAd();
-	void setAd(int ad);
-
-	/* Actions */
 	void attack(const std::string &target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
+	void guardGate();
 };
