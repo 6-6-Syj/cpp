@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 17:33:04 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/18 12:41:05 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/19 13:01:40 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ Point::Point(const Point &other) : _x(other._x), _y(other._y) {}
 Point &Point::operator=(const Point &other)
 {
 	if (this != &other)
-	{
-	}
+		this->_fixedPointValue = other._fixedPointValue;
 	return *this;
 }
 
