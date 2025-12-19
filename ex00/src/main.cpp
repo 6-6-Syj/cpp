@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 13:13:31 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/19 15:22:10 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/19 16:29:29 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,16 +77,6 @@ void testRepair()
 
 	std::cout << "\nFull repair:" << std::endl;
 	patient.beRepaired(10);
-
-	std::cout << "\nEnergy depletion:" << std::endl;
-	ClapTrap tiredBot("Tired");
-	for (int i = 0; i < 10; i++)
-	{
-		tiredBot.beRepaired(1);
-	}
-
-	std::cout << "\nAttempt without energy:" << std::endl;
-	tiredBot.beRepaired(1);
 }
 
 void testEdgeCases()
@@ -106,7 +96,9 @@ void testEdgeCases()
 
 	std::cout << "\n3. Maximum repair:" << std::endl;
 	ClapTrap maxBot("MaxBot");
+	maxBot.beRepaired(4294967295);
 	maxBot.beRepaired(1000);
+	maxBot.takeDamage(4294967295);
 	maxBot.takeDamage(1000);
 }
 

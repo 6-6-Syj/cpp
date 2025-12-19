@@ -8,9 +8,10 @@ OBJ_DIR		:= .build/
 #------------------------------------------------#
 #					FILES						 #
 #------------------------------------------------#
-NAME	= 	clapTrap
+NAME	= 	scavTrap
 SRC		= 	main.cpp			\
 			ClapTrap.cpp		\
+			ScavTrap.cpp		\
 
 SRCS	= 	$(addprefix $(SRC_DIR), $(SRC))
 

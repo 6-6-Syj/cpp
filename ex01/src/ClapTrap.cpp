@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 13:13:16 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/19 15:21:35 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/19 16:27:21 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ std::string ClapTrap::getName()
 	return this->_name;
 }
 
-int ClapTrap::getHp()
+unsigned int ClapTrap::getHp()
 {
 	return this->_hp;
 }
 
-int ClapTrap::getEnergy()
+unsigned int ClapTrap::getEnergy()
 {
 	return this->_energy;
 }
@@ -89,7 +89,8 @@ void ClapTrap::attack(const std::string &target)
 		std::cout << "ClapTrap " << this->_name << " can't attack " << target << " 'cause energy: " << this->_energy << std::endl;
 		return;
 	}
-	std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_ad << " points of damage!" << std::endl;
+	std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing "
+			  << this->_ad << " points of damage!" << std::endl;
 	this->_energy--;
 }
 
@@ -100,40 +101,40 @@ void ClapTrap::takeDamage(unsigned int amount)
 		std::cout << "ClapTrap " << this->_name << " is already dead!" << std::endl;
 		return;
 	}
-	if (amount > static_cast<unsigned int>(this->_hp))
+	if (amount > this->_hp)
 	{
 		unsigned int actualDamage = this->_hp;
-		std::cout << "ClapTrap " << this->_name << " lost " << actualDamage << " hit points!" << std::endl;
 		this->_hp = 0;
+		std::cout << "ClapTrap " << this->_name << " lost " << actualDamage << " hit points! (HP: " << this->_hp << "/10)" << std::endl;
 	}
 	else
 	{
-		std::cout << "ClapTrap " << this->_name << " lost " << amount << " hit points!" << std::endl;
-		this->_hp -= static_cast<int>(amount);
+		this->_hp -= amount;
+		std::cout << "ClapTrap " << this->_name << " lost " << amount << " hit points! (HP: " << this->_hp << "/10)" << std::endl;
 	}
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_hp <= 0)
-		std::cout << "ClapTrap " << this->_name << " can't regains 'cause hp: " << this->_hp << std::endl;
-	else if (this->_energy == 0)
-		std::cout << "ClapTrap " << this->_name << " can't regains 'cause energy: " << this->_energy << std::endl;
-	else
 	{
-		if (amount + this->_hp > 10)
-		{
-			int tmp = 10 - this->_hp;
-			std::cout << "ClapTrap " << this->_name << " regains " << tmp << " hit points!" << std::endl;
-			this->_hp += tmp;
-		}
-		else
-		{
-			std::cout << "ClapTrap " << this->_name << " regains " << amount << " hit points!" << std::endl;
-			this->_hp += amount;
-		}
-		this->_energy--;
+		std::cout << "ClapTrap " << this->_name << " can't regains 'cause hp: " << this->_hp << std::endl;
 		return;
 	}
-	return;
+	else if (this->_energy <= 0)
+	{
+		std::cout << "ClapTrap " << this->_name << " can't regains 'cause energy: " << this->_energy << std::endl;
+		return;
+	}
+	else
+	{
+		unsigned int healAmount = amount;
+		if (healAmount > (10 - this->_hp))
+			healAmount = 10 - this->_hp;
+
+		this->_hp += healAmount;
+		std::cout << "ClapTrap " << this->_name << " regains " << healAmount
+					<< " hit points! (HP: " << this->_hp << "/10)" << std::endl;
+	}
+	this->_energy--;
 }
