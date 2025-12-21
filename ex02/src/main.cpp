@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 21:49:55 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/22 00:34:43 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/22 00:40:08 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,5 +165,8 @@ int main()
 	brainTest();
 	polyMorph();
 
+	// Animal a;
+	// Animal* ptr = new Animal();
+	
 	return 0;
 }

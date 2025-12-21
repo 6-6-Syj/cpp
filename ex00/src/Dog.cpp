@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 23:08:41 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/20 00:06:08 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/21 23:01:38 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 Dog::Dog() : Animal()
 {
 	_type = "Dog";
-	std::cout << "DOG: Default constructor called" << std::endl;
+	std::cout << "DOG: Created" << std::endl;
 }
 
 Dog::Dog(std::string type) : Animal(type)

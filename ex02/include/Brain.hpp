@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/19 23:06:05 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/19 23:50:03 by jmagand          ###   ########.fr       */
+/*   Created: 2025/12/20 00:20:10 by jmagand           #+#    #+#             */
+/*   Updated: 2025/12/21 23:34:39 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "WrongAnimal.hpp"
+#include <string>
 
-class WrongCat : public WrongAnimal
+#define MAX_IDEAS 100
+
+class Brain
 {
-	public:
-	WrongCat();
-	WrongCat(std::string type);
-	WrongCat(const WrongCat &other);
-	WrongCat &operator=(const WrongCat &other);
-	virtual ~WrongCat();
+protected:
+	std::string _ideas[MAX_IDEAS];
 
-	std::string getType() const;
-	void makeSound() const;
+public:
+	Brain();
+	Brain(const Brain &other);
+	Brain &operator=(const Brain &other);
+	~Brain();
+
+	void setIdea(int i, std::string idea);
+	std::string getIdea(int i) const;
 };

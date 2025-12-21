@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 23:02:38 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/20 00:18:44 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/21 23:01:38 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 WrongAnimal::WrongAnimal() : _type("Wrong")
 {
-	std::cout << "WRONG_ANIMAL: Default constructor called" << std::endl;
+	std::cout << "WRONG_ANIMAL: Created" << std::endl;
 }
 
 WrongAnimal::WrongAnimal(std::string type) : _type(type)

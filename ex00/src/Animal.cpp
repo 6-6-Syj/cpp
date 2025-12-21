@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 21:54:54 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/19 23:36:33 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/21 23:01:38 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 Animal::Animal() : _type("unknown")
 {
-	std::cout << "ANIMAL: Default constructor called" << std::endl;
+	std::cout << "ANIMAL: Created" << std::endl;
 };
 
 Animal::Animal(std::string type) : _type(type)
@@ -36,7 +36,8 @@ Animal &Animal::operator=(const Animal &other)
 	return *this;
 }
 
-Animal::~Animal() {
+Animal::~Animal()
+{
 	std::cout << "ANIMAL: Destructor called" << std::endl;
 };
 

@@ -8,7 +8,7 @@ OBJ_DIR		:= .build/
 #------------------------------------------------#
 #					FILES						 #
 #------------------------------------------------#
-NAME	= 	brain
+NAME	= 	abstract
 SRC		= 	main.cpp			\
 			Animal.cpp			\
 			Dog.cpp				\
