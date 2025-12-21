@@ -6,15 +6,15 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 22:08:31 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/22 00:32:42 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/22 00:48:28 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
-class Dog : public Animal
+class Dog : public AAnimal
 {
 public:
 	Dog();

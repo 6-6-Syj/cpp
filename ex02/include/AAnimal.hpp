@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 21:50:08 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/22 00:39:12 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/22 00:47:59 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 #include <Brain.hpp>
 
-class Animal
+class AAnimal
 {
 protected:
 	std::string _type;
 	Brain *_brain;
 
 public:
-	Animal();
-	Animal(const Animal &other);
-	Animal &operator=(const Animal &other);
-	virtual ~Animal();
+	AAnimal();
+	AAnimal(const AAnimal &other);
+	AAnimal &operator=(const AAnimal &other);
+	virtual ~AAnimal();
 
 	std::string getType() const;
 	virtual void makeSound() const = 0;

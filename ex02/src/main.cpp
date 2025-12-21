@@ -6,13 +6,13 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 21:49:55 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/22 00:40:08 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/22 00:55:21 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <sstream>
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
@@ -21,8 +21,8 @@ static void subject()
 {
 	std::cout << "=== Test 1: Subject ===" << std::endl;
 	{
-		const Animal *j = new Dog();
-		const Animal *i = new Cat();
+		const AAnimal *j = new Dog();
+		const AAnimal *i = new Cat();
 
 		std::cout << "\nJ type: " << j->getType() << std::endl;
 		std::cout << "I type: " << i->getType() << std::endl;
@@ -34,28 +34,28 @@ static void subject()
 		delete i;
 	}
 
-	std::cout << "\n\n=== Test 2: Array of Animals (50% Dog, 50% Cat) ===" << std::endl;
+	std::cout << "\n\n=== Test 2: Array of AAnimals (50% Dog, 50% Cat) ===" << std::endl;
 	{
 		const int arraySize = 100;
 
-		Animal *animals[arraySize];
+		AAnimal *Aanimals[arraySize];
 
 		for (int i = 0; i < arraySize / 2; i++)
-			animals[i] = new Dog();
+			Aanimals[i] = new Dog();
 			
 		for (int i = arraySize / 2; i < arraySize; i++)
-			animals[i] = new Cat();
+			Aanimals[i] = new Cat();
 
 		std::cout << "\nMaking sounds from array:" << std::endl;
 		for (int i = 0; i < arraySize; i++)
 		{
-			std::cout << "Animal " << i << " (" << animals[i]->getType() << "): ";
-			animals[i]->makeSound();
+			std::cout << "AAnimal " << i << " (" << Aanimals[i]->getType() << "): ";
+			Aanimals[i]->makeSound();
 		}
 
-		std::cout << "\nDeleting all animals:" << std::endl;
+		std::cout << "\nDeleting all Aanimals:" << std::endl;
 		for (int i = 0; i < arraySize; i++)
-			delete animals[i];
+			delete Aanimals[i];
 	}
 }
 
@@ -137,7 +137,7 @@ static void polyMorph()
 {
 	std::cout << "\n\n=== Test 5: Polymorphism verification ===" << std::endl;
 	{
-		Animal *polyArray[4];
+		AAnimal *polyArray[4];
 
 		polyArray[0] = new Dog();
 		polyArray[1] = new Cat();
@@ -147,7 +147,7 @@ static void polyMorph()
 		std::cout << "\nPolymorphic behavior:" << std::endl;
 		for (int i = 0; i < 4; i++)
 		{
-			std::cout << "Animal " << i << " type: " << polyArray[i]->getType();
+			std::cout << "AAnimal " << i << " type: " << polyArray[i]->getType();
 			std::cout << " - Sound: ";
 			polyArray[i]->makeSound();
 		}
@@ -165,8 +165,11 @@ int main()
 	brainTest();
 	polyMorph();
 
-	// Animal a;
-	// Animal* ptr = new Animal();
+	AAnimal a;
+	(void)a;
+	
+	// AAnimal* ptr = new AAnimal();
+	// (void)ptr;
 	
 	return 0;
 }
