@@ -11,6 +11,12 @@ OBJ_DIR		:= .build/
 NAME	= 	interface
 SRC		= 	main.cpp				\
 			AMateria.cpp			\
+			Ice.cpp					\
+			Cure.cpp				\
+			ICharacter.cpp			\
+			Character.cpp			\
+			IMateriaSource.cpp		\
+			MateriaSource.cpp		\
 
 SRCS	= 	$(addprefix $(SRC_DIR), $(SRC))
 

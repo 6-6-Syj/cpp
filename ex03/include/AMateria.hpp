@@ -6,14 +6,15 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 00:57:12 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/22 01:09:10 by jmagand          ###   ########.fr       */
+/*   Updated: 2025/12/23 00:29:02 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <string>
-#include "ICharacter.hpp"
+
+class ICharacter;
 
 class AMateria
 {
@@ -21,12 +22,15 @@ protected:
 	std::string _type;
 
 public:
-	AMateria() {}
+	AMateria();
+	AMateria(std::string const & type);
 	AMateria(const AMateria &other);
 	AMateria &operator=(const AMateria &other);
-	virtual ~AMateria() {}
-
-	std::string const &getType() const; // Returns the materia type
-	virtual AMateria* clone() const = 0;
+	virtual ~AMateria();
+	
+	std::string const &getType() const;
+	
 	virtual void use(ICharacter& target);
+	
+	virtual AMateria* clone() const = 0;
 };

@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.hpp                                           :+:      :+:    :+:   */
+/*   ICharacter.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/22 01:04:47 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/23 00:32:08 by jmagand          ###   ########.fr       */
+/*   Created: 2025/12/22 20:54:56 by jmagand           #+#    #+#             */
+/*   Updated: 2025/12/22 23:34:18 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-
-#include "AMateria.hpp"
 #include "ICharacter.hpp"
+#include <iostream>
 
-class Cure : public AMateria
+ICharacter::~ICharacter()
 {
-protected:
-public:
-	Cure();
-	Cure(const Cure &other);
-	Cure &operator=(const Cure &other);
-	virtual ~Cure();
-
-	virtual void use(ICharacter &target);
-	virtual Cure* clone() const;
-};
+	// std::cout << "Character Interface destroyed" << std::endl;
+}
