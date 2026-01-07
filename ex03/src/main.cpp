@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 01:03:53 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/23 00:55:41 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/07 14:42:40 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,40 @@ int main()
 	AMateria *curee = new Cure();
 	AMateria *icee = new Ice();
 
+
 	std::cout << std::endl;
 	{
-		Character udyr;
-		udyr.equip(curee);
-		udyr.equip(icee);
-		udyr.equip(curee);
-		udyr.equip(icee);
-		udyr.showInventory();
+		AMateria *iceeeee = NULL;
+		Character john;
+		
+		john.showInventory();
+		john.equip(curee);
+		john.equip(iceeeee);
+		john.equip(curee);
+		john.equip(icee);
+		john.equip(curee);
+		john.showInventory();
+	
+		std::cout << std::endl;
+
+		john.unequip(2);
+		john.showInventory();
+		std::cout << std::endl;
+
+		john.unequip(3);
+		john.unequip(3);
+		john.unequip(15);
+		john.equip(icee);
+		john.equip(icee);
+		john.showInventory();
 	}
 	// me->use(0, *bob);
 	// me->use(1, *bob);
 	std::cout << bob->getName() << " got " << bob->getHp() << " HP." <<std::endl;
 	delete bob;
+	
 	delete me;
 	delete src;
+	
 	return 0;
 }

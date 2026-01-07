@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 21:40:48 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/23 00:53:19 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/07 15:00:25 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 const int Character::MAX_HP = 100;
 
-Character::Character() : _name("Nobody"), _hp(MAX_HP)
+Character::Character() : _name("Nobody"), _hp(MAX_HP), _materiaCount(0)
 {
 	for (int i = 0; i < MAX_MATERIA; i++)
 		this->inventory[i] = NULL;
 	std::cout << this->_name << " created ! (default)" << std::endl;
 }
 
-Character::Character(const std::string name) : _name(name), _hp(MAX_HP)
+Character::Character(const std::string name) : _name(name), _hp(MAX_HP), _materiaCount(0)
 {
 	for (int i = 0; i < MAX_MATERIA; i++)
 		this->inventory[i] = NULL;
@@ -81,29 +81,46 @@ int Character::getHp() const
 
 void Character::equip(AMateria *m)
 {
-	if (!m || this->_materiaCount >= MAX_MATERIA)
-		return ;
-		
+	if (!m)
+	{
+		std::cout << "problem with materia" << std::endl;
+		return;
+	}
+	
+	if (this->_materiaCount >= MAX_MATERIA)
+	{
+		std::cout << "Bag is full of materias" << std::endl;
+		return;
+	}
+
 	int i = 0;
-    while (i < MAX_MATERIA)
-    {
-        if (!this->inventory[i])
-        {
-            this->inventory[i] = m;
-            this->_materiaCount++;
-            return;
-        }
-        i++;
-    }
-	std::cout << "Char should equip: " << m << std::endl
-			  << "materia equipped: " << _materiaCount << std::endl;
+	while (i < MAX_MATERIA)
+	{
+		if (!this->inventory[i])
+		{
+			this->inventory[i] = m;
+			std::cout << m->getType() << " equipped on slot" << _materiaCount << std::endl;
+			this->_materiaCount++;
+			return;
+		}
+		i++;
+	}
 }
 
 void Character::unequip(int idx)
 {
-	this->_materiaCount -= 1;
-	std::cout << "Char unequip slot[" << idx << "]" << std::endl
-			  << "materia equipped: " << _materiaCount << std::endl;
+	std::cout << "Need to stock the pointer to delete it (actually on the ground)" << std::endl;
+	if (idx < MAX_MATERIA)
+	{
+		if (this->inventory[idx])
+		{
+			this->_materiaCount--;
+			std::cout << inventory[idx]->getType() << " unequipped on bag[" << idx << "]" << std::endl;
+			this->inventory[idx] = NULL;
+			return;
+		}
+	}
+	std::cout << "unequip: Nothing happened" << std::endl;
 }
 
 void Character::use(int idx, ICharacter &target)
