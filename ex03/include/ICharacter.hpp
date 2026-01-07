@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 01:08:04 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/23 00:28:39 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/07 16:28:05 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ class AMateria;
 
 class ICharacter
 {
+	private : 
+	static Floor floor;
 public:
 	virtual ~ICharacter();
 	virtual std::string const &getName() const = 0;

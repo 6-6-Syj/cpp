@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 21:40:48 by jmagand           #+#    #+#             */
-/*   Updated: 2026/01/07 15:00:25 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/07 16:26:17 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,8 @@ void Character::unequip(int idx)
 		if (this->inventory[idx])
 		{
 			this->_materiaCount--;
-			std::cout << inventory[idx]->getType() << " unequipped on bag[" << idx << "]" << std::endl;
+			std::cout << inventory[idx]->getType() << " unequipped on inventory[" << idx << "]" << std::endl;
+			this->inventory[idx].
 			this->inventory[idx] = NULL;
 			return;
 		}
@@ -127,7 +128,7 @@ void Character::use(int idx, ICharacter &target)
 {
 	if (idx >= 0 && idx < _materiaCount && inventory[idx] != NULL)
 		inventory[idx]->use(target);
-	std::cout << "Char use slot[" << idx << "] on char: " << target.getName() << std::endl;
+	std::cout << this->getName() << " use slot[" << idx << "] on char: " << target.getName() << std::endl;
 }
 
 void Character::showInventory() const

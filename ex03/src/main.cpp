@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 01:03:53 by jmagand           #+#    #+#             */
-/*   Updated: 2026/01/07 14:42:40 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/07 16:19:15 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,39 @@
 #include "ICharacter.hpp"
 #include "Character.hpp"
 #include "Ice.hpp"
+#include "Floor.hpp"
 #include "Cure.hpp"
 #include <iostream>
+
+void test_inventory() 
+{
+	AMateria *curee = new Cure();
+	AMateria *icee = new Ice();
+
+	std::cout << std::endl;
+	{
+		AMateria *iceeeee = NULL;
+		Character john;
+		
+		john.showInventory();
+		john.equip(curee);
+		john.equip(iceeeee);
+		john.equip(curee);
+		john.equip(icee);
+		john.equip(curee);
+		john.showInventory();
+
+		john.unequip(2);
+		john.showInventory();
+
+		john.unequip(3);
+		john.unequip(3);
+		john.unequip(15);
+		john.equip(icee);
+		john.equip(icee);
+		john.showInventory();
+	}
+}
 
 int main()
 {
@@ -26,7 +57,7 @@ int main()
 	// src->learnMateria(new Cure());
 
 	ICharacter *me = new Character("me");
-	const AMateria *cure = new Cure();
+	AMateria *cure = new Cure();
 
 	std::cout << std::endl;
 	{
@@ -48,38 +79,12 @@ int main()
 	// me->equip(tmp);
 	// tmp = src->createMateria("cure");
 	// me->equip(tmp);
+
+	// test_inventory();
+	std::cout << std::endl;
+	
 	ICharacter *bob = new Character("bob");
 
-	AMateria *curee = new Cure();
-	AMateria *icee = new Ice();
-
-
-	std::cout << std::endl;
-	{
-		AMateria *iceeeee = NULL;
-		Character john;
-		
-		john.showInventory();
-		john.equip(curee);
-		john.equip(iceeeee);
-		john.equip(curee);
-		john.equip(icee);
-		john.equip(curee);
-		john.showInventory();
-	
-		std::cout << std::endl;
-
-		john.unequip(2);
-		john.showInventory();
-		std::cout << std::endl;
-
-		john.unequip(3);
-		john.unequip(3);
-		john.unequip(15);
-		john.equip(icee);
-		john.equip(icee);
-		john.showInventory();
-	}
 	// me->use(0, *bob);
 	// me->use(1, *bob);
 	std::cout << bob->getName() << " got " << bob->getHp() << " HP." <<std::endl;
