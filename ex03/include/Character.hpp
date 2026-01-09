@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 21:38:01 by jmagand           #+#    #+#             */
-/*   Updated: 2026/01/07 14:23:27 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/09 16:30:35 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ class Character : public ICharacter
 {
 private:
 	std::string _name;
-	static const int MAX_HP;
-	AMateria *inventory[MAX_MATERIA];
-	int _hp;
+	AMateria *_inventory[MAX_MATERIA];
 	int _materiaCount;
 
 public:
@@ -31,17 +29,17 @@ public:
 	Character(const std::string name);
 	Character(const Character &other);
 	Character &operator=(const Character &other);
-	virtual ~Character();
+	virtual ~Character(); // TODO: Check
 
 	/* getters */
-	virtual std::string const &getName() const;
-	virtual int getHp() const;
+	std::string const &getName() const;
 
 	/* actions */
-	virtual void equip(AMateria *m);
-	virtual void unequip(int idx);
-	virtual void use(int idx, ICharacter &target);
+	void equip(AMateria *m);
+	void unequip(int idx);
+	void use(int idx, ICharacter &target);
 
 	/* utils */
+	bool isSlotOccupied(int idx) const;
 	void showInventory() const;
 };

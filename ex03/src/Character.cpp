@@ -6,67 +6,84 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 21:40:48 by jmagand           #+#    #+#             */
-/*   Updated: 2026/01/07 16:26:17 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/09 16:35:29 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
+#include "Floor.hpp"
 #include <iostream>
 
-const int Character::MAX_HP = 100;
-
-Character::Character() : _name("Nobody"), _hp(MAX_HP), _materiaCount(0)
+Character::Character() : _name("Nobody"), _materiaCount(0)
 {
 	for (int i = 0; i < MAX_MATERIA; i++)
-		this->inventory[i] = NULL;
+		this->_inventory[i] = NULL;
 	std::cout << this->_name << " created ! (default)" << std::endl;
 }
 
-Character::Character(const std::string name) : _name(name), _hp(MAX_HP), _materiaCount(0)
+Character::Character(const std::string name) : _name(name), _materiaCount(0)
 {
 	for (int i = 0; i < MAX_MATERIA; i++)
-		this->inventory[i] = NULL;
+		this->_inventory[i] = NULL;
 	std::cout << this->_name << " created ! (by name)" << std::endl;
 }
 
-Character::Character(const Character &other)
+Character::Character(const Character &other) : _name(other._name + "_copy"), _materiaCount(0)
 {
-	std::string tmp = this->_name;
-	this->_name = other._name;
-	this->_hp = other._hp;
-	this->_materiaCount = other._materiaCount;
-	for (int i = 0; i < _materiaCount; i++)
-		this->inventory[i] = other.inventory[i];
-	std::cout << "From " << tmp << " to " << _name << std::endl
-			  << "(copy(Char))" << std::endl;
+	for (int i = 0; i < MAX_MATERIA; i++)
+		_inventory[i] = NULL;
+	for (int i = 0; i < MAX_MATERIA; i++)
+	{
+		if (other._inventory[i])
+		{
+			_inventory[i] = other._inventory[i]->clone();
+			_materiaCount++;
+		}
+		else
+			_inventory[i] = NULL;
+	}
 }
 
 Character &Character::operator=(const Character &other)
 {
 	if (this != &other)
 	{
-		std::string tmp = this->_name;
-		this->_name = other._name;
-		this->_hp = other._hp;
-		this->_materiaCount = other._materiaCount;
-		for (int i = 0; i < _materiaCount; i++)
-			this->inventory[i] = other.inventory[i];
-		std::cout << "From " << tmp << " to " << _name << std::endl
-				  << "Need to do deep copy of char's bag." << std::endl
-				  << "(operator=)" << std::endl;
+		for (int i = 0; i < MAX_MATERIA; i++)
+		{
+			if (_inventory[i])
+			{
+				delete _inventory[i];
+				_inventory[i] = NULL;
+			}
+		}
+	}
+	_materiaCount = 0;
+	_name = other._name;
+
+	for (int i = 0; i < MAX_MATERIA; i++)
+	{
+		if (other._inventory[i])
+		{
+			_inventory[i] = other._inventory[i]->clone();
+			_materiaCount++;
+		}
+		else
+			_inventory[i] = NULL;
 	}
 	return (*this);
 }
 
 Character::~Character()
 {
-	// for (int i = 0; i < _materiaCount; i++)
-	// {
-	// 	if (_inventory[i])
-	// 	delete this->inventory[i];
-	// }
-	std::cout << "Char " << this->_name << " died. "
-			  << "-> Need to delete materias!" << std::endl;
+	for (int i = 0; i < _materiaCount; i++)
+	{
+		if (_inventory[i])
+		{
+			delete this->_inventory[i];
+			_inventory[i] = NULL;
+		}
+	}
+	std::cout << this->_name << " died. " << std::endl;
 }
 
 std::string const &Character::getName() const
@@ -74,32 +91,28 @@ std::string const &Character::getName() const
 	return this->_name;
 }
 
-int Character::getHp() const
-{
-	return this->_hp;
-}
-
 void Character::equip(AMateria *m)
 {
 	if (!m)
 	{
-		std::cout << "problem with materia" << std::endl;
+		std::cout << "Problem with materia pointed" << std::endl;
 		return;
 	}
-	
+
 	if (this->_materiaCount >= MAX_MATERIA)
 	{
-		std::cout << "Bag is full of materias" << std::endl;
+		std::cout << "Inventory is full, deleting " << m->getType() << std::endl;
+		delete m;
 		return;
 	}
 
 	int i = 0;
 	while (i < MAX_MATERIA)
 	{
-		if (!this->inventory[i])
+		if (!this->_inventory[i])
 		{
-			this->inventory[i] = m;
-			std::cout << m->getType() << " equipped on slot" << _materiaCount << std::endl;
+			this->_inventory[i] = m;
+			std::cout << m->getType() << " equipped on slot [" << i << "]" << std::endl;
 			this->_materiaCount++;
 			return;
 		}
@@ -109,15 +122,15 @@ void Character::equip(AMateria *m)
 
 void Character::unequip(int idx)
 {
-	std::cout << "Need to stock the pointer to delete it (actually on the ground)" << std::endl;
-	if (idx < MAX_MATERIA)
+	if (idx < MAX_MATERIA && idx >= 0)
 	{
-		if (this->inventory[idx])
+		if (this->_inventory[idx])
 		{
 			this->_materiaCount--;
-			std::cout << inventory[idx]->getType() << " unequipped on inventory[" << idx << "]" << std::endl;
-			this->inventory[idx].
-			this->inventory[idx] = NULL;
+			std::cout << _inventory[idx]->getType() << " unequipped on inventory[" << idx << "]" << std::endl;
+			Floor *floor = Floor::getFloor();
+			floor->dropMateria(_inventory[idx]);
+			this->_inventory[idx] = NULL;
 			return;
 		}
 	}
@@ -126,9 +139,10 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter &target)
 {
-	if (idx >= 0 && idx < _materiaCount && inventory[idx] != NULL)
-		inventory[idx]->use(target);
-	std::cout << this->getName() << " use slot[" << idx << "] on char: " << target.getName() << std::endl;
+	if (idx >= 0 && idx < _materiaCount && _inventory[idx] != NULL)
+		_inventory[idx]->use(target);
+	else
+		std::cout << "use: Something goes wrong" << std::endl;
 }
 
 void Character::showInventory() const
@@ -136,8 +150,17 @@ void Character::showInventory() const
 	std::cout << this->_name << "'s inventory:" << std::endl;
 	for (int i = 0; i < MAX_MATERIA; i++)
 	{
-		if (this->inventory[i])
-			std::cout << "[" << i << "] = " << this->inventory[i]->getType() << std::endl;
+		if (this->_inventory[i])
+			std::cout << "[" << i << "] = " << this->_inventory[i]->getType() << std::endl;
+		else
+			std::cout << "[" << i << "] = NULL" << std::endl;
 	}
 	std::cout << std::endl;
+}
+
+bool Character::isSlotOccupied(int idx) const
+{
+	if (idx < 0 || idx >= 4)
+		return false;
+	return _inventory[idx] != NULL;
 }

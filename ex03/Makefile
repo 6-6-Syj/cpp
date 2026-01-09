@@ -17,7 +17,7 @@ SRC		= 	main.cpp				\
 			Character.cpp			\
 			IMateriaSource.cpp		\
 			MateriaSource.cpp		\
-			Floor.cpp				
+			Floor.cpp				\
 
 SRCS	= 	$(addprefix $(SRC_DIR), $(SRC))
 

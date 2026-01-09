@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 15:08:57 by jmagand           #+#    #+#             */
-/*   Updated: 2026/01/07 16:11:27 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/09 16:07:31 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,53 +14,31 @@
 #include "AMateria.hpp"
 #include <iostream>
 
-Floor::Floor() : _capacity(10), _size(0)
+Floor *Floor::_floor = NULL;
+
+Floor::Floor() : _capacity(MAX_MATERIA), _size(0)
 {
-	_ptrs = new AMateria*[_capacity];
+	_ptrs = new AMateria *[_capacity];
 	for (int i = 0; i < _capacity; i++)
 		_ptrs[i] = NULL;
+	_floor = NULL;
 	std::cout << "Floor created" << std::endl;
-}
-
-Floor::Floor(const Floor &other)
-{
-	_capacity = other._capacity;
-	_size = other._size;
-	_ptrs = new AMateria*[_capacity];
-
-	for (int i = 0; i < _size; i++)
-		_ptrs[i] = other._ptrs[i];
-}
-
-Floor &Floor::operator=(const Floor &other)
-{
-	if (this != &other)
-	{
-		for (int i = 0; i < other._size; i++)
-			delete _ptrs[i];
-		delete[] _ptrs;
-
-		_capacity = other._capacity;
-		_size = other._size;
-		_ptrs = new AMateria*[_capacity];
-
-		for (int i = 0; i < _size; i++)
-			_ptrs[i] = other._ptrs[i];
-	}
-	return *this;
 }
 
 Floor::~Floor()
 {
-	for (int i = 0; i < _size; i++)
-		delete _ptrs[i];
-	delete[] _ptrs;
+	cleanFloor();
+	if (_ptrs != NULL)
+	{
+		delete[] _ptrs;
+		_ptrs = NULL;
+	}
 	std::cout << "Floor destroyed" << std::endl;
 }
 
 void Floor::resize(int newCapacity)
 {
-	AMateria **resized = new AMateria*[newCapacity];
+	AMateria **resized = new AMateria *[newCapacity];
 
 	for (int i = 0; i < _size; i++)
 		resized[i] = _ptrs[i];
@@ -71,14 +49,56 @@ void Floor::resize(int newCapacity)
 	_capacity = newCapacity;
 }
 
-void Floor::pushBack(AMateria *materia)
+Floor *Floor::getFloor()
 {
-	if (materia)
+	if (!_floor)
+		_floor = new Floor;
+	return _floor;
+}
+
+void Floor::dropMateria(AMateria *materia)
+{
+	if (!materia)
 	{
-		if (_size >= _capacity)
-			resize(_capacity * 2);
-		_ptrs[_size] = materia;
-		_size++;
+		std::cout << "can't drop" << std::endl;
 		return;
+	}
+	if (_size >= _capacity)
+		resize(_capacity * 2);
+	_ptrs[_size] = materia;
+	_size++;
+}
+
+void Floor::displayFloor()
+{
+	std::cout << "Ground:" << std::endl;
+	for (int i = 0; i < _size; i++)
+	{
+		if (_ptrs[i])
+			std::cout << "slot [" << i << "]: " << _ptrs[i]->getType() << std::endl;
+		else
+			std::cout << "slot [" << i << "]: NULL" << std::endl;
+	}
+}
+
+void Floor::cleanFloor()
+{
+	for (int i = 0; i < _size; i++)
+	{
+		if (_ptrs[i] != NULL)
+		{
+			delete _ptrs[i];
+			_ptrs[i] = NULL;
+		}
+	}
+	_size = 0;
+}
+
+void Floor::destroyFloor()
+{
+	if (_floor != NULL)
+	{
+		delete _floor;
+		_floor = NULL;
 	}
 }

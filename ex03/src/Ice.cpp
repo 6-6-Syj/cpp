@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 01:05:59 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/23 00:16:28 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/09 13:51:31 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 Ice::Ice() : AMateria()
 {
 	_type = "ice";
-	std::cout << "Ice AMateria '" << _type << "' created. (default)" << std::endl;
+	// std::cout << "Ice AMateria '" << _type << "' created. (default)" << std::endl;
 }
 
 Ice::Ice(const Ice &other) : AMateria(other)
 {
 	this->_type = other._type;
-	std::cout << "Ice AMateria '" << _type << "' created. (copy(Ice))" << std::endl;
+	// std::cout << "Ice AMateria '" << _type << "' created. (copy(Ice))" << std::endl;
 }
 
 Ice &Ice::operator=(const Ice &other)
@@ -31,13 +31,13 @@ Ice &Ice::operator=(const Ice &other)
 	{
 		this->_type = other._type;
 	}
-	std::cout << "Ice AMateria '" << _type << "' created. (operator=)" << std::endl;
+	// std::cout << "Ice AMateria '" << _type << "' created. (operator=)" << std::endl;
 	return *this;
 }
 
 Ice::~Ice()
 {
-	std::cout << "Ice AMateria '" << _type << "' destroyed." << std::endl;
+	// std::cout << "Ice AMateria '" << _type << "' destroyed." << std::endl;
 }
 
 void Ice::use(ICharacter &target)
