@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 21:40:48 by jmagand           #+#    #+#             */
-/*   Updated: 2026/01/09 16:35:29 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/10 12:02:10 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ Character &Character::operator=(const Character &other)
 
 Character::~Character()
 {
-	for (int i = 0; i < _materiaCount; i++)
+	for (int i = 0; i < MAX_MATERIA; i++)
 	{
 		if (_inventory[i])
 		{
@@ -122,19 +122,18 @@ void Character::equip(AMateria *m)
 
 void Character::unequip(int idx)
 {
-	if (idx < MAX_MATERIA && idx >= 0)
+	if ((idx < 0 || idx >= MAX_MATERIA) || !_inventory[idx])
 	{
-		if (this->_inventory[idx])
-		{
-			this->_materiaCount--;
-			std::cout << _inventory[idx]->getType() << " unequipped on inventory[" << idx << "]" << std::endl;
-			Floor *floor = Floor::getFloor();
-			floor->dropMateria(_inventory[idx]);
-			this->_inventory[idx] = NULL;
-			return;
-		}
+		std::cout << "unequip: Nothing happened" << std::endl;
+		return;
 	}
-	std::cout << "unequip: Nothing happened" << std::endl;
+	
+    std::cout << _inventory[idx]->getType() << " unequipped on inventory[" << idx << "]" << std::endl;
+    
+    Floor* floor = Floor::getFloor();
+    floor->dropMateria(_inventory[idx]);
+    _inventory[idx] = NULL;
+    _materiaCount--;
 }
 
 void Character::use(int idx, ICharacter &target)

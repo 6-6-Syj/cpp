@@ -6,14 +6,11 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 01:03:53 by jmagand           #+#    #+#             */
-/*   Updated: 2026/01/09 16:39:46 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/10 12:06:04 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
-#include "IMateriaSource.hpp"
 #include "MateriaSource.hpp"
-#include "ICharacter.hpp"
 #include "Character.hpp"
 #include "Ice.hpp"
 #include "Floor.hpp"
@@ -99,80 +96,80 @@ void test_inventory()
 
 void test_comprehensive_materia()
 {
-	// std::cout << "\n=== COMPREHENSIVE MATERIA TEST ===\n";
+	std::cout << "\n=== COMPREHENSIVE MATERIA TEST ===\n";
 
-	// {
-	// 	std::cout << "\n--- Test 1: Deep Copy and Clone ---\n";
-	// 	Ice *ice1 = new Ice();
-	// 	Ice *ice2 = dynamic_cast<Ice *>(ice1->clone());
+	{
+		std::cout << "\n--- Test 1: Deep Copy and Clone ---\n";
+		Ice *ice1 = new Ice();
+		Ice *ice2 = dynamic_cast<Ice *>(ice1->clone());
 
-	// 	std::cout << "ice1 address: " << ice1 << std::endl;
-	// 	std::cout << "ice2 (clone) address: " << ice2 << std::endl;
-	// 	std::cout << "Are they different objects? " << (ice1 != ice2 ? "YES" : "NO") << std::endl;
+		std::cout << "ice1 address: " << ice1 << std::endl;
+		std::cout << "ice2 (clone) address: " << ice2 << std::endl;
+		std::cout << "Are they different objects? " << (ice1 != ice2 ? "YES" : "NO") << std::endl;
 
-	// 	delete ice1;
-	// 	delete ice2;
-	// }
+		delete ice1;
+		delete ice2;
+	}
 
-	// {
-	// 	std::cout << "\n--- Test 2: Unknown Materia Types ---\n";
-	// 	MateriaSource src;
-	// 	src.learnMateria(new Ice());
-	// 	src.learnMateria(new Cure());
+	{
+		std::cout << "\n--- Test 2: Unknown Materia Types ---\n";
+		MateriaSource src;
+		src.learnMateria(new Ice());
+		src.learnMateria(new Cure());
 
-	// 	AMateria *unknown = src.createMateria("fire");
-	// 	if (unknown == NULL)
-	// 		std::cout << "Correctly returned NULL for unknown type 'fire'\n";
-	// 	else
-	// 		std::cout << "ERROR: Should return NULL for unknown type\n";
+		AMateria *unknown = src.createMateria("fire");
+		if (unknown == NULL)
+			std::cout << "Correctly returned NULL for unknown type 'fire'\n";
+		else
+			std::cout << "ERROR: Should return NULL for unknown type\n";
 
-	// 	AMateria *ice = src.createMateria("ice");
-	// 	if (ice != NULL)
-	// 		std::cout << "Successfully created ice materia\n";
-	// 	delete ice;
-	// }
+		AMateria *ice = src.createMateria("ice");
+		if (ice != NULL)
+			std::cout << "Successfully created ice materia\n";
+		delete ice;
+	}
 
-	// {
-	// 	std::cout << "\n--- Test 3: Full Inventory Management ---\n";
-	// 	Character alice("Alice");
+	{
+		std::cout << "\n--- Test 3: Full Inventory Management ---\n";
+		Character alice("Alice");
 
-	// 	for (int i = 0; i < 4; i++)
-	// 	{
-	// 		alice.equip(new Cure());
-	// 	}
+		for (int i = 0; i < 4; i++)
+		{
+			alice.equip(new Cure());
+		}
 
-	// 	alice.equip(new Ice());
+		alice.equip(new Ice());
 
-	// 	for (int i = 0; i < 4; i++)
-	// 	{
-	// 		alice.unequip(i);
-	// 	}
+		for (int i = 0; i < 4; i++)
+		{
+			alice.unequip(i);
+		}
 
-	// 	alice.equip(new Ice());
-	// 	alice.equip(new Cure());
-	// 	alice.equip(new Ice());
+		alice.equip(new Ice());
+		alice.equip(new Cure());
+		alice.equip(new Ice());
 
-	// 	std::cout << "Inventory after mixed fill:\n";
-	// 	alice.showInventory();
-	// }
+		std::cout << "Inventory after mixed fill:\n";
+		alice.showInventory();
+	}
 
-	// {
-	// 	std::cout << "\n--- Test 4: Materia Usage ---\n";
-	// 	Character bob("Bob");
-	// 	Character enemy("Goblin");
+	{
+		std::cout << "\n--- Test 4: Materia Usage ---\n";
+		Character bob("Bob");
+		Character enemy("Goblin");
 
-	// 	bob.equip(new Ice());
-	// 	bob.equip(new Cure());
-	// 	bob.equip(new Ice());
+		bob.equip(new Ice());
+		bob.equip(new Cure());
+		bob.equip(new Ice());
 
-	// 	std::cout << "Using all equipped materias:\n";
-	// 	for (int i = 0; i < 4; i++)
-	// 	{
-	// 		bob.use(i, enemy);
-	// 	}
+		std::cout << "Using all equipped materias:\n";
+		for (int i = 0; i < 4; i++)
+		{
+			bob.use(i, enemy);
+		}
 
-	// 	bob.use(3, enemy);
-	// }
+		bob.use(3, enemy);
+	}
 
 	{
 		std::cout << "\n--- Test 5: Character Copy with Inventory ---\n";
@@ -197,65 +194,67 @@ void test_comprehensive_materia()
 		original.showInventory();
 		std::cout << "Copy after original unequip: ";
 		copy.showInventory();
+		
+		Floor::getFloor()->cleanFloor();
 	}
 
-	// {
-	// 	std::cout << "\n--- Test 6: Floor Management ---\n";
-	// 	Floor* floor = Floor::getFloor();
-	// 	Character charlie("Charlie");
+	{
+		std::cout << "\n--- Test 6: Floor Management ---\n";
+		Floor* floor = Floor::getFloor();
+		Character charlie("Charlie");
 
-	// 	for (int i = 0; i < 6; i++)
-	// 	{
-	// 		if (i % 2 == 0)
-	// 			charlie.equip(new Ice());
-	// 		else
-	// 			charlie.equip(new Cure());
+		for (int i = 0; i < 6; i++)
+		{
+			if (i % 2 == 0)
+				charlie.equip(new Ice());
+			else
+				charlie.equip(new Cure());
 
-	// 		if (i > 1)
-	// 		{
-	// 			charlie.unequip(i - 2);
-	// 		}
-	// 	}
+			if (i > 1)
+			{
+				charlie.unequip(i - 2);
+			}
+		}
 
-	// 	std::cout << "Floor content after unequips:\n";
-	// 	floor->displayFloor();
+		std::cout << "Floor content after unequips:\n";
+		floor->displayFloor();
 
-	// 	floor->cleanFloor();
-	// 	std::cout << "Floor after cleanup:\n";
-	// 	floor->displayFloor();
-	// }
+		floor->cleanFloor();
+		std::cout << "Floor after cleanup:\n";
+		floor->displayFloor();
+	}
 
-	// {
-	// 	std::cout << "\n--- Test 7: Complex Scenario ---\n";
-	// 	IMateriaSource *src = new MateriaSource();
-	// 	src->learnMateria(new Ice());
-	// 	src->learnMateria(new Cure());
+	{
+		std::cout << "\n--- Test 7: Complex Scenario ---\n";
+		IMateriaSource *src = new MateriaSource();
+		src->learnMateria(new Ice());
+		src->learnMateria(new Cure());
 
-	// 	ICharacter *hero = new Character("Hero");
-	// 	ICharacter *monster = new Character("Monster");
+		ICharacter *hero = new Character("Hero");
+		ICharacter *monster = new Character("Monster");
 
-	// 	AMateria *m1 = src->createMateria("ice");
-	// 	AMateria *m2 = src->createMateria("cure");
-	// 	AMateria *m3 = src->createMateria("ice");
-	// 	AMateria *m4 = src->createMateria("cure");
+		AMateria *m1 = src->createMateria("ice");
+		AMateria *m2 = src->createMateria("cure");
+		AMateria *m3 = src->createMateria("ice");
+		AMateria *m4 = src->createMateria("cure");
 
-	// 	hero->equip(m1);
-	// 	hero->equip(m2);
-	// 	hero->equip(m3);
+		hero->equip(m1);
+		hero->equip(m2);
+		hero->equip(m3);
 
-	// 	hero->unequip(1);
-	// 	hero->equip(m4);
+		hero->unequip(1);
+		hero->equip(m4);
 
-	// 	std::cout << "Hero attacks monster:\n";
-	// 	for (int i = 0; i < 4; i++)
-	// 		hero->use(i, *monster);
+		std::cout << "Hero attacks monster:\n";
+		for (int i = 0; i < 4; i++)
+			hero->use(i, *monster);
 
-	// 	monster->equip(src->createMateria("cure"));
+		monster->equip(src->createMateria("cure"));
 
-	// 	delete monster;
-	// 	delete hero;
-	// 	delete src;
-	// }
+		delete monster;
+		delete hero;
+		delete src;
+	}
 }
 
 void test_edge_cases()
@@ -315,37 +314,40 @@ void test_edge_cases()
 	}
 }
 
+void subject()
+{
+	std::cout << "\n=== ORIGINAL SUBJECT TEST ===\n";
+
+	IMateriaSource *src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+
+	ICharacter *me = new Character("me");
+	AMateria *tmp;
+
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+
+	ICharacter *bob = new Character("bob");
+
+	me->use(0, *bob);
+	me->use(1, *bob);
+
+	delete bob;
+	delete me;
+	delete src;
+}
+
 int main()
 {
-	std::cout << "=== STARTING COMPREHENSIVE TESTS ===\n";
-
-	// test_constructors();
-	// test_inventory();
+	test_constructors();
+	test_inventory();
 	test_comprehensive_materia();
-	// test_edge_cases();
+	test_edge_cases();
 
-	// std::cout << "\n=== ORIGINAL SUBJECT TEST ===\n";
-
-	// IMateriaSource *src = new MateriaSource();
-	// src->learnMateria(new Ice());
-	// src->learnMateria(new Cure());
-
-	// ICharacter *me = new Character("me");
-	// AMateria *tmp;
-
-	// tmp = src->createMateria("ice");
-	// me->equip(tmp);
-	// tmp = src->createMateria("cure");
-	// me->equip(tmp);
-
-	// ICharacter *bob = new Character("bob");
-
-	// me->use(0, *bob);
-	// me->use(1, *bob);
-
-	// delete bob;
-	// delete me;
-	// delete src;
+	subject();
 
 	std::cout << "\n=== ALL TESTS COMPLETED ===\n";
 	Floor::destroyFloor();
