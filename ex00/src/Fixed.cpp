@@ -6,25 +6,23 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 19:59:19 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/17 11:56:30 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/11 16:21:15 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
 
-const int Fixed:: _fractionalBits = 8;
+const int Fixed::_fractionalBits = 8;
 
-Fixed::Fixed()
+Fixed::Fixed() : _fixedPointValue(0)
 {
 	std::cout << "Default constructor called" << std::endl;
-	this->_fixedPointValue = 0;
 }
 
-Fixed::Fixed(const Fixed &other)
+Fixed::Fixed(const Fixed &other) : _fixedPointValue(other._fixedPointValue)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	this->_fixedPointValue = other._fixedPointValue;
 }
 
 Fixed &Fixed::operator=(const Fixed &other)

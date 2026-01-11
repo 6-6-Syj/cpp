@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 11:59:25 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/18 14:22:48 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/11 16:18:26 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,19 @@
 
 const int Fixed::_fractionalBits = 8;
 
-Fixed::Fixed()
+Fixed::Fixed() : _fixedPointValue(0)
 {
 	// std::cout << "Default constructor called" << std::endl;
-	this->_fixedPointValue = 0;
 }
 
-Fixed::Fixed(const int val)
+Fixed::Fixed(const int val) : _fixedPointValue(val << _fractionalBits)
 {
 	// std::cout << "Int constructor called" << std::endl;
-	this->_fixedPointValue = val << _fractionalBits;
 }
 
-Fixed::Fixed(const float val)
+Fixed::Fixed(const float val) : _fixedPointValue(roundf(val * (1 << _fractionalBits)))
 {
 	// std::cout << "Float constructor called" << std::endl;
-	this->_fixedPointValue = roundf(val * (1 << _fractionalBits));
 }
 
 Fixed &Fixed::operator=(const Fixed &other)

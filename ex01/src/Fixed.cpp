@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 19:59:19 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/19 13:00:52 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/11 16:16:16 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,26 @@
 #include <iostream>
 #include <cmath>
 
-const int Fixed:: _fractionalBits = 8;
+const int Fixed::_fractionalBits = 8;
 
-Fixed::Fixed()
+Fixed::Fixed() : _fixedPointValue(0)
 {
 	std::cout << "Default constructor called" << std::endl;
-	this->_fixedPointValue = 0;
 }
 
-Fixed::Fixed(const int val)
+Fixed::Fixed(const int val) : _fixedPointValue(val << _fractionalBits)
 {
 	std::cout << "Int constructor called" << std::endl;
-	this->_fixedPointValue = val << _fractionalBits;
 }
 
-Fixed::Fixed(const float val)
+Fixed::Fixed(const float val) : _fixedPointValue(roundf(val * (1 << _fractionalBits)))
 {
 	std::cout << "Float constructor called" << std::endl;
-	this->_fixedPointValue = roundf(val * (1 << _fractionalBits));
 }
 
-Fixed::Fixed(const Fixed &other)
+Fixed::Fixed(const Fixed &other) : _fixedPointValue(other._fixedPointValue)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	this->_fixedPointValue = other._fixedPointValue;
 }
 
 Fixed &Fixed::operator=(const Fixed &other)
@@ -69,12 +65,12 @@ float Fixed::toFloat() const
 	return static_cast<float>(_fixedPointValue) / (1 << _fractionalBits);
 }
 
-int	Fixed::toInt() const
+int Fixed::toInt() const
 {
 	return _fixedPointValue >> _fractionalBits;
 }
 
-std::ostream& operator<<(std::ostream& out, const Fixed& fixed)
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed)
 {
 	out << fixed.toFloat();
 	return out;
