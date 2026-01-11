@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 22:02:51 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/09 16:51:48 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/11 12:52:35 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(int ac, char **av)
     if (ac == 1)
     {
         std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-        return (0);
+        return 0;
     }
 	i = j = 0;
     while (++i < ac)
@@ -33,5 +33,5 @@ int main(int ac, char **av)
         }
     }
     std::cout << std::endl;
-    return (0);
+    return 0;
 }

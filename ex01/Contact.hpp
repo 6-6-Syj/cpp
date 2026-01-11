@@ -6,17 +6,18 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 17:41:08 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/12 13:49:57 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/11 12:20:40 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
-# define CONTACT_HPP
+#define CONTACT_HPP
 
-# include <string>
-# include <iostream>
+#include <string>
+#include <iostream>
 
-class Contact {
+class Contact
+{
 private:
     std::string _firstName;
     std::string _lastName;
