@@ -6,21 +6,36 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:00:48 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/12 15:12:13 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/11 13:22:26 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
+#include <iostream>
 
-int main(void) {
-	Zombie z1;
-	Zombie z2("Jean-Eude");
-	Zombie* z3;
+int main(void)
+{
+	{
+		Zombie z0;
+		Zombie z2("Corinne");
+		
+		z0.announce();
+		z2.announce();
+		
+		randomChump("Clovis");
+	}
 	
-	z3 = newZombie("Jeremiade");
-	z1.announce();
-	z3->announce();
-	z2.announce();
-	randomChump("Clovis");
-	delete z3;
+	{
+		Zombie *z3 = newZombie("HEAP");
+		z3->announce();
+		delete z3;
+	}
+	
+	{
+		randomChump("STACK");
+		Zombie *z4 = newZombie("Leaks");
+		z4->announce();
+	}
+
+	return 0;
 }
