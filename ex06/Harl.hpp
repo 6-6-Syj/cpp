@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 15:37:00 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/15 19:50:29 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/11 15:54:04 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,19 @@
 
 #include <string>
 
-enum Command {
+enum enumCommand
+{
 	DEBUG,
 	INFO,
 	WARNING,
 	ERROR,
 	UNKNOWN
+};
+
+struct array
+{
+	const char *name;
+	enumCommand command;
 };
 
 class Harl
@@ -30,8 +37,9 @@ private:
 	void warning();
 	void error();
 
+	static const array _commands[];
+	enumCommand getEnumFromString(const std::string &s) const;
+
 public:
 	void complain(const std::string &level);
 };
-
-Command getEnumFromString(const std::string &s);

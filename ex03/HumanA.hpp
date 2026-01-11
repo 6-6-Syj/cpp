@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 16:49:44 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/12 17:59:01 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/11 14:47:23 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 
 class HumanA
 {
+private:
+	std::string _name;
+	Weapon &_weapon;
+
 public:
 	HumanA(std::string name, Weapon &weapon);
 	~HumanA();
 	void attack();
-
-private:
-	std::string _name;
-	Weapon &_weapon;
 };

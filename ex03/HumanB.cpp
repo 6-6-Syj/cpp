@@ -6,20 +6,16 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 16:49:46 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/17 12:50:34 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/11 14:29:48 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 #include <iostream>
 
-HumanB::HumanB() : _name("John"), _weapon(0) {};
+HumanB::HumanB() : _name("John"), _weapon(NULL) {};
 
-HumanB::HumanB(std::string name)
-{
-	_name = name;
-	_weapon = 0;
-}
+HumanB::HumanB(std::string name) : _name(name), _weapon(NULL) {}
 
 void HumanB::setWeapon(Weapon &w)
 {

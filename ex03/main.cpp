@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 16:42:38 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/17 12:52:54 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/11 15:06:22 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,20 +79,19 @@ void testHumanB_changeWeapon()
     std::cout << std::endl;
 }
 
-HumanB *makeHumanB()
+HumanA *makeHumanA()
 {
-	Weapon club("crude spiked club");
-	HumanB *jim = new HumanB("Jim");
-	jim->setWeapon(club);
-	jim->attack();
-	return jim; // So club is destroyed here.
+    Weapon club("crude spiked club");
+    HumanA *jim = new HumanA("Jim", club);
+    jim->attack();
+    return jim;
 }
 
-void testHumanB_crash()
+void testHumanA_crash()
 {
-    std::cout << "=== Test HumanB dangling weapon ===\n";
-    HumanB *jim = makeHumanB();
-    jim->attack(); // and there, pointing to random
+    std::cout << "=== Test HumanA no weapon ===\n";
+    HumanA *jim = makeHumanA();
+    jim->attack();
     delete jim;
 }
 
@@ -100,9 +99,10 @@ int main()
 {
     testHumanA_subject();
     testHumanB_subject();
+    testSameWeapon();
     testHumanB_withoutWeapon();
     testHumanB_changeWeapon();
     testSameWeapon();
-	// testHumanB_crash();
+    // testHumanA_crash(); // Problem there (Weapon scope makeHumanA)
     return 0;
 }

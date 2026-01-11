@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:00:48 by jmagand           #+#    #+#             */
-/*   Updated: 2026/01/11 13:22:26 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/11 14:15:12 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int main(void)
 	
 	{
 		randomChump("STACK");
-		Zombie *z4 = newZombie("Leaks");
-		z4->announce();
+		// Zombie *z4 = newZombie("Leaks");
+		// z4->announce();
 	}
 
 	return 0;

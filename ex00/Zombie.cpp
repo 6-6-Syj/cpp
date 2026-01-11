@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:02:19 by jmagand           #+#    #+#             */
-/*   Updated: 2026/01/11 13:13:25 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/11 14:14:49 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 
 Zombie::Zombie() : _name("Unknown") {}
 
-Zombie::Zombie(std::string name)
-{
-	this->_name = name;
-}
+Zombie::Zombie(std::string name) : _name(name) {}
 
 Zombie::~Zombie()
 {

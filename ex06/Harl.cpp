@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 15:36:58 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/17 12:00:06 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/11 15:54:08 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,21 @@ void Harl::error()
 			  << std::endl;
 }
 
-Command getEnumFromString(const std::string &s)
-{
-	typedef std::map<std::string, Command> MapCmd;
-	MapCmd cmds;
-	if (cmds.empty())
-	{
-		cmds["DEBUG"] = DEBUG;
-		cmds["INFO"] = INFO;
-		cmds["WARNING"] = WARNING;
-		cmds["ERROR"] = ERROR;
-	}
+const array Harl::_commands[] = {
+	{"DEBUG", DEBUG},
+	{"INFO", INFO},
+	{"WARNING", WARNING},
+	{"ERROR", ERROR}
+};
 
-	MapCmd::const_iterator it = cmds.find(s);
-	if (it != cmds.end())
-		return it->second;
-	return UNKNOWN;
+enumCommand Harl::getEnumFromString(const std::string &s) const
+{
+    for (int i = 0; i < UNKNOWN; i++)
+    {
+        if (s == _commands[i].name)
+            return _commands[i].command;
+    }
+    return UNKNOWN;
 }
 
 void Harl::complain(const std::string &level)
@@ -74,30 +73,7 @@ void Harl::complain(const std::string &level)
 		debug();
 	case INFO:
 		info();
-	case WARNING:#pragma once
-
-#include <iostream>
-
-class Fixed
-{
-private:
-	int _fixedPointValue;
-	static const int _fractionalBits;
-
-public:
-	Fixed();
-	Fixed(const int val);
-	Fixed(const float val);
-	Fixed(const Fixed &other);
-	Fixed &operator=(const Fixed& other);
-	~Fixed();
-	int 	getRawBits() const;
-	void 	setRawBits(int const raw);
-	float 	toFloat() const;
-	int 	toInt() const;
-};
-
-std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
+	case WARNING:
 		warning();
 	case ERROR:
 		error();

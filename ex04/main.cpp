@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 12:58:35 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/13 15:56:36 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/11 15:12:55 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <fstream>
 #include <string>
 
-std::string replaceStrings(std::string line, const std::string& s1, const std::string& s2)
+std::string replaceStrings(std::string line, const std::string &s1, const std::string &s2)
 {
 	std::size_t occurence = line.find(s1);
 
@@ -57,13 +57,12 @@ int main(int ac, char **av)
 	{
 		std::cerr << "Failed to open \"" << (filename + ".replace") << "\"" << std::endl;
 		file.close();
+		replaced.close();
 		return 1;
 	}
 
 	while (std::getline(file, line))
-	{
 		replaced << replaceStrings(line, s1, s2) << std::endl;
-	}
 
 	file.close();
 	replaced.close();
