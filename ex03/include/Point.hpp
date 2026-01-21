@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 17:24:56 by jmagand           #+#    #+#             */
-/*   Updated: 2026/01/11 16:26:26 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/01/21 14:55:16 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ class Point
 private:
 	const Fixed _x;
 	const Fixed _y;
+	Point &operator=(const Point &other);
 
 public:
 	Point();
 	Point(const Fixed &o1, const Fixed &o2);
 	Point(const Point &other);
-	Point &operator=(const Point &other);
 	~Point();
 
 	/* Getters */
