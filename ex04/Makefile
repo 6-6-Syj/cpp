@@ -49,6 +49,9 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME)
+	@if ls *.replace 1>/dev/null 2>&1; then \
+		rm *.replace; \
+	fi
 	@echo "$(B_RED)➤ Full clean$(RESET)"
 	@echo "$(B_GREEN)   ✓ All removed$(RESET)\n"
 

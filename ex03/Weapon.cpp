@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 16:49:49 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/12 17:49:47 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/02/09 13:52:26 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Weapon::Weapon(std::string type)
 
 Weapon::~Weapon() {}
 
-std::string Weapon::getType() const
+const std::string& Weapon::getType() const
 {
 	return (_type);
 }
