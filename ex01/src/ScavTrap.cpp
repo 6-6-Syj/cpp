@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 16:33:12 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/19 20:58:22 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/02/13 15:40:19 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void ScavTrap::beRepaired(unsigned int amount)
 
 		this->_hp += healAmount;
 		std::cout << "ScavTrap " << this->_name << " regains " << healAmount
-					<< " hit points! (HP: " << this->_hp << "/100)" << std::endl;
+				  << " hit points! (HP: " << this->_hp << "/100)" << std::endl;
 	}
 	this->_energy--;
 }

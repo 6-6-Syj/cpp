@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 13:13:16 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/19 16:49:08 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/02/13 15:39:57 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int ClapTrap::getAd()
 
 void ClapTrap::setAd(int ad)
 {
+	if (ad < 0)
+		ad = 0;
 	this->_ad = ad;
 }
 
@@ -128,13 +130,15 @@ void ClapTrap::beRepaired(unsigned int amount)
 	}
 	else
 	{
+		if (amount < 0)
+			amount = 0;
 		unsigned int healAmount = amount;
 		if (healAmount > (10 - this->_hp))
 			healAmount = 10 - this->_hp;
 
 		this->_hp += healAmount;
 		std::cout << "ClapTrap " << this->_name << " regains " << healAmount
-					<< " hit points! (HP: " << this->_hp << "/10)" << std::endl;
+				  << " hit points! (HP: " << this->_hp << "/10)" << std::endl;
 	}
 	this->_energy--;
 }

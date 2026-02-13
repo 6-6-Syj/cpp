@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 13:13:31 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/19 20:51:41 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/02/13 15:32:25 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ void testScavConstruction()
 	ScavTrap scavCopied(scavNamed);
 
 	std::cout << "\n4. Assignment operator:" << std::endl;
-	ScavTrap scavAssigned;
-	scavAssigned = scavNamed;
+	scavDefault = scavNamed;
 
 	std::cout << "\n5. Destruction order verification:" << std::endl;
 	{
@@ -43,7 +42,7 @@ void testScavConstruction()
 		std::cout << "Leaving scope..." << std::endl;
 	}
 
-	std::cout << "\nScavTraps about to be destroyed (note reverse order):" << std::endl;
+	std::cout << "\nScavTraps about to be destroyed:" << std::endl;
 }
 
 void testScavEdgeCases()
@@ -59,7 +58,6 @@ void testScavEdgeCases()
 
 	std::cout << "\n2. Repair at max HP:" << std::endl;
 	ScavTrap healthyScav("Healthy");
-	healthyScav.beRepaired(10);
 	healthyScav.beRepaired(10);
 
 	std::cout << "\n3. Mixed ClapTrap and ScavTrap:" << std::endl;

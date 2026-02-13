@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 13:12:37 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/19 16:49:34 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/02/13 15:39:55 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ public:
 	ClapTrap(const ClapTrap &other);
 	ClapTrap &operator=(const ClapTrap &other);
 	~ClapTrap();
-	
+
 	/* Operator */
 	ClapTrap &operator--();
 

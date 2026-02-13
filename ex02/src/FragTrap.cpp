@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 20:32:37 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/19 21:38:00 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/02/13 15:37:26 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ FragTrap::FragTrap() : ClapTrap()
 	this->_hp = 100;
 	this->_energy = 100;
 	this->_ad = 30;
-	std::cout << BLUE "Constructor by default called " RST << std::endl;
+	std::cout << GREEN "Constructor by default called " RST << std::endl;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
@@ -28,7 +28,7 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	this->_hp = 100;
 	this->_energy = 100;
 	this->_ad = 30;
-	std::cout << BLUE "Constructor by name called" RST << std::endl;
+	std::cout << GREEN "Constructor by name called" RST << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other)
@@ -37,12 +37,12 @@ FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other)
 	this->_hp = 100;
 	this->_energy = 100;
 	this->_ad = 30;
-	std::cout << BLUE "Copy constructor called" RST << std::endl;
+	std::cout << GREEN "Copy constructor called" RST << std::endl;
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &other)
 {
-	std::cout << BLUE "Copy assignment operator called" RST << std::endl;
+	std::cout << GREEN "Copy assignment operator called" RST << std::endl;
 	if (this != &other)
 	{
 		this->_name = other._name;
@@ -55,7 +55,7 @@ FragTrap &FragTrap::operator=(const FragTrap &other)
 
 FragTrap::~FragTrap()
 {
-	std::cout << BLUE << this->_name << " died." RST << std::endl;
+	std::cout << GREEN << this->_name << " died." RST << std::endl;
 }
 
 void FragTrap::attack(const std::string &target)

@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 13:13:31 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/19 16:29:29 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/02/13 15:24:10 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ void testConstruction()
 	ClapTrap defaultBot;
 	ClapTrap namedBot("Bender");
 	ClapTrap copiedBot(namedBot);
-	ClapTrap assignedBot;
-	assignedBot = namedBot;
+	defaultBot = namedBot;
 
 	std::cout << std::endl;
 }

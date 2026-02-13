@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 13:12:37 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/19 22:51:05 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/02/13 15:34:31 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #define RED "\033[31m"
 #define RST "\033[0m"
 #define BLUE "\033[34m"
+#define GREEN "\033[32m"
 
 #include <string>
 

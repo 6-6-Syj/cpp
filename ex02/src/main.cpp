@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 13:13:31 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/19 21:44:04 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/02/13 15:40:38 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@
 #include <iostream>
 
 void testFragConstruction()
-{	
+{
 	std::cout << "\n1. Default construction:" << std::endl;
 	FragTrap fragDefault;
-	
+
 	std::cout << "\n2. Named construction:" << std::endl;
 	FragTrap fragNamed("Fragy");
-	
+
 	std::cout << "\n3. Copy construction:" << std::endl;
 	FragTrap fragCopied(fragNamed);
-	
+
 	std::cout << "\n4. Assignment operator:" << std::endl;
 	FragTrap fragAssigned;
 	fragAssigned = fragNamed;
@@ -36,7 +36,7 @@ void testFragConstruction()
 		FragTrap scopedFrag("ScopedFrag");
 		std::cout << "Leaving scope..." << std::endl;
 	}
-	
+
 	std::cout << "\nFragTraps about to be destroyed:" << std::endl;
 }
 
@@ -57,10 +57,12 @@ void testFragEdgeCases()
 
 	std::cout << "\n3. Mixed ClapTrap and FragTrap:" << std::endl;
 	ClapTrap clap("Clapper");
-	FragTrap Frag("Frager");
+	FragTrap frag("Frager");
+	ScavTrap scav("Scaver");
 
 	clap.attack("Target1");
-	Frag.attack("Target2");;
+	frag.attack("Target2");
+	scav.attack("Target3");
 }
 
 int main()
