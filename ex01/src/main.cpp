@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 19:58:34 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/17 12:40:21 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/02/13 13:30:34 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int main(void)
 	Fixed const b(10);
 	Fixed const c(42.42f);
 	Fixed const d(b);
-	// a = Fixed(1234.4321f);
-	a = Fixed(3.14159265358979323846264338327950288419716939937f);
+	a = Fixed(1234.4321f);
+	// a = Fixed(3.14159265358979323846264338327950288419716939937f);
 	std::cout << "a is " << a << std::endl;
 	std::cout << "b is " << b << std::endl;
 	std::cout << "c is " << c << std::endl;

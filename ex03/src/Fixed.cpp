@@ -6,14 +6,14 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 11:59:25 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/18 14:52:23 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/02/13 15:11:35 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <cmath>
 
-const int Fixed:: _fractionalBits = 8;
+const int Fixed::_fractionalBits = 8;
 
 /* Default constructor */
 Fixed::Fixed()
@@ -35,7 +35,7 @@ Fixed &Fixed::operator=(Fixed &other)
 }
 
 /* Copy constructor */
-Fixed::Fixed(const Fixed& other)
+Fixed::Fixed(const Fixed &other)
 {
 	this->_fixedPointValue = other._fixedPointValue;
 }

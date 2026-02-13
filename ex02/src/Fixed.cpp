@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 11:59:25 by jmagand           #+#    #+#             */
-/*   Updated: 2026/01/11 16:18:26 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/02/13 13:37:15 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Fixed &Fixed::operator=(const Fixed &other)
 {
 	// std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
-		this->_fixedPointValue = other._fixedPointValue;
+		setRawBits(other._fixedPointValue);
 	return *this;
 }
 
@@ -108,17 +108,17 @@ Fixed Fixed::operator-(const Fixed &other) const
 Fixed Fixed::operator/(const Fixed &other) const
 {
 	Fixed res;
-	long long temp = (static_cast<long long>(_fixedPointValue) << _fractionalBits);
-	res.setRawBits(static_cast<int>(temp / other._fixedPointValue));
+	long long tmp = (static_cast<long long>(_fixedPointValue) << _fractionalBits);
+	res.setRawBits(static_cast<int>(tmp / other._fixedPointValue));
 	return res;
 }
 
 Fixed Fixed::operator*(const Fixed &other) const
 {
 	Fixed res;
-	long long temp = static_cast<long long>(_fixedPointValue) *
+	long long tmp = static_cast<long long>(_fixedPointValue) *
 					 static_cast<long long>(other._fixedPointValue);
-	res.setRawBits(static_cast<int>(temp >> _fractionalBits));
+	res.setRawBits(static_cast<int>(tmp >> _fractionalBits));
 	return res;
 }
 

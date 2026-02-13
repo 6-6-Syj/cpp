@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 11:59:00 by jmagand           #+#    #+#             */
-/*   Updated: 2026/01/21 14:41:50 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/02/13 15:10:09 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ public:
 	Fixed &operator=(Fixed &other);
 	~Fixed();
 
-	/* Getters - Setters */
 	int getRawBits() const;
 	void setRawBits(const int raw);
 
