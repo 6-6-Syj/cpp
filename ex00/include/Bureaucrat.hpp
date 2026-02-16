@@ -6,13 +6,14 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 16:42:18 by jmagand           #+#    #+#             */
-/*   Updated: 2026/02/13 16:54:54 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/02/16 16:17:27 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <string>
+#include <iostream>
 
 class Bureaucrat
 {
@@ -27,4 +28,21 @@ public:
 
 	const std::string& getName();
 	const int& getGrade();
+	
+	void incrementGrade();
+	void decrementGrade();
+	
+	class GradeTooHighException: public std::exception
+	{
+		public :
+			virtual const char* what() const throw();
+	};
+	
+	class GradeTooLowException: public std::exception
+	{
+		public :
+			virtual const char* what() const throw();
+	};
 };
+
+std::ostream& operator<<(std::ostream &out, Bureaucrat test);
