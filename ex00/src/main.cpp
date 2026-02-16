@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 21:49:55 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/21 22:32:29 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/02/16 18:35:30 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int main()
 	
 		didier = rob;
 	}
-
+	
+	std::cout << std::endl;
 	cat->makeSound();
 	dog->makeSound();
 	meta->makeSound();

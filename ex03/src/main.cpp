@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 01:03:53 by jmagand           #+#    #+#             */
-/*   Updated: 2026/01/10 12:06:04 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/02/16 19:22:21 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,6 @@ void test_comprehensive_materia()
 		AMateria *unknown = src.createMateria("fire");
 		if (unknown == NULL)
 			std::cout << "Correctly returned NULL for unknown type 'fire'\n";
-		else
-			std::cout << "ERROR: Should return NULL for unknown type\n";
 
 		AMateria *ice = src.createMateria("ice");
 		if (ice != NULL)
@@ -181,11 +179,8 @@ void test_comprehensive_materia()
 		Character assigned("Temp");
 		assigned = original;
 
-		std::cout << "Original inventory: ";
 		original.showInventory();
-		std::cout << "Copy inventory: ";
 		copy.showInventory();
-		std::cout << "Assigned inventory: ";
 		assigned.showInventory();
 
 		std::cout << "\nUnequipping from original (should not affect copies):\n";

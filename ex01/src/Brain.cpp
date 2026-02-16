@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 00:21:16 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/22 00:30:26 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/02/16 19:05:40 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ std::string Brain::getIdea(int i) const
 {
 	if (i < 0 || i >= MAX_IDEAS)
 	{
-		std::cerr << "Warning: Brain::getIdea index " << i << " out of bounds" << std::endl;
-        return "";
+		std::cout << "Warning: index " << i << " out of bounds" << std::endl;
+		return "";
 	}
 	return this->_ideas[i];
 }
@@ -57,4 +57,3 @@ void Brain::setIdea(int i, std::string idea)
 {
 	this->_ideas[i] = idea;
 }
-

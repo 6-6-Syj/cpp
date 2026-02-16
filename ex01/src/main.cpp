@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 21:49:55 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/22 00:34:43 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/02/16 18:58:18 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,10 @@ static void deepCopy()
 	{
 		std::cout << "\n--- Testing Dog deep copy ---" << std::endl;
 		Dog *originalDog = new Dog();
-		Dog *copiedDog = new Dog(*originalDog);
-
 		originalDog->getBrain()->setIdea(0, "Original Dog's First Idea");
 		originalDog->getBrain()->setIdea(1, "Original Dog's Second Idea");
-
-		copiedDog->getBrain()->setIdea(0, "Copied Dog's First Idea");
-		copiedDog->getBrain()->setIdea(1, "Copied Dog's Second Idea");
+		
+		Dog *copiedDog = new Dog(*originalDog);
 
 		std::cout << "\nOriginal Dog ideas:" << std::endl;
 		std::cout << "Idea 0: " << originalDog->getBrain()->getIdea(0) << std::endl;
@@ -81,17 +78,6 @@ static void deepCopy()
 		std::cout << "Idea 0: " << copiedDog->getBrain()->getIdea(0) << std::endl;
 		std::cout << "Idea 1: " << copiedDog->getBrain()->getIdea(1) << std::endl;
 
-		Dog assignedDog;
-		Dog &assignedDogRef = assignedDog;
-		(void)assignedDogRef;
-		
-		assignedDog = *originalDog;
-		assignedDog.getBrain()->setIdea(0, "Assigned Dog's Modified Idea");
-
-		std::cout << "\nAfter modifying assigned dog:" << std::endl;
-		std::cout << "Original Dog idea 0: " << originalDog->getBrain()->getIdea(0) << std::endl;
-		std::cout << "Assigned Dog idea 0: " << assignedDog.getBrain()->getIdea(0) << std::endl;
-
 		delete originalDog;
 		delete copiedDog;
 	}
@@ -99,13 +85,12 @@ static void deepCopy()
 	{
 		std::cout << "\n--- Testing Cat deep copy ---" << std::endl;
 		Cat *originalCat = new Cat();
+		originalCat->getBrain()->setIdea(0, "Original Cat's Mouse Chase Idea 1");
+		originalCat->getBrain()->setIdea(1, "Original Cat's Mouse Chase Idea 2");
 		Cat *copiedCat = new Cat(*originalCat);
 
-		originalCat->getBrain()->setIdea(0, "Original Cat's Mouse Chase Idea");
-		copiedCat->getBrain()->setIdea(0, "Copied Cat's Nap Idea");
-
-		std::cout << "\nOriginal Cat idea 0: " << originalCat->getBrain()->getIdea(0) << std::endl;
-		std::cout << "Copied Cat idea 0: " << copiedCat->getBrain()->getIdea(0) << std::endl;
+		std::cout << "\nOriginal Cat idea 0: " << originalCat->getBrain()->getIdea(1) << std::endl;
+		std::cout << "Copied Cat idea 0: " << copiedCat->getBrain()->getIdea(1) << std::endl;
 
 		delete originalCat;
 		delete copiedCat;

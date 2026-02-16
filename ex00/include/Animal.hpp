@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 21:50:08 by jmagand           #+#    #+#             */
-/*   Updated: 2025/12/19 23:36:23 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/02/16 18:30:58 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ class Animal
 {
 protected:
 	std::string _type;
+	
 public:
 	Animal();
 	Animal(std::string type);
