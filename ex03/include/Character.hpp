@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 21:38:01 by jmagand           #+#    #+#             */
-/*   Updated: 2026/01/09 16:30:35 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/02/16 19:31:02 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ public:
 	Character(const std::string name);
 	Character(const Character &other);
 	Character &operator=(const Character &other);
-	virtual ~Character(); // TODO: Check
+	virtual ~Character();
 
 	/* getters */
 	std::string const &getName() const;

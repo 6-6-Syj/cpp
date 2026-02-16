@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 01:03:53 by jmagand           #+#    #+#             */
-/*   Updated: 2026/02/16 19:22:21 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/02/16 19:29:56 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void test_inventory()
 		floor->displayFloor();
 		
 		std::cout << std::endl << "====== CLEANUP ======" << std::endl;
-		for (int i = 0; i < 4; i++) 
+		for (int i = 0; i < MAX_MATERIA; i++) 
 			john.unequip(i);
 		john.showInventory();
 		
@@ -131,14 +131,14 @@ void test_comprehensive_materia()
 		std::cout << "\n--- Test 3: Full Inventory Management ---\n";
 		Character alice("Alice");
 
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < MAX_MATERIA; i++)
 		{
 			alice.equip(new Cure());
 		}
 
 		alice.equip(new Ice());
 
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < MAX_MATERIA; i++)
 		{
 			alice.unequip(i);
 		}
@@ -161,7 +161,7 @@ void test_comprehensive_materia()
 		bob.equip(new Ice());
 
 		std::cout << "Using all equipped materias:\n";
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < MAX_MATERIA; i++)
 		{
 			bob.use(i, enemy);
 		}
@@ -241,7 +241,7 @@ void test_comprehensive_materia()
 		hero->equip(m4);
 
 		std::cout << "Hero attacks monster:\n";
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < MAX_MATERIA; i++)
 			hero->use(i, *monster);
 
 		monster->equip(src->createMateria("cure"));
