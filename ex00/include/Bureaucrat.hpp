@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 16:42:18 by jmagand           #+#    #+#             */
-/*   Updated: 2026/02/16 16:17:27 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/03/23 14:03:48 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,13 @@ private:
 
 public:
 	Bureaucrat();
-	Bureaucrat(const std::string name, int grade);
+	Bureaucrat(const std::string &name, int grade);
+	Bureaucrat(const Bureaucrat &other);
+    Bureaucrat &operator=(const Bureaucrat &other);
 	~Bureaucrat();
 
-	const std::string& getName();
-	const int& getGrade();
+	const std::string& getName() const;
+	const int& getGrade() const;
 	
 	void incrementGrade();
 	void decrementGrade();

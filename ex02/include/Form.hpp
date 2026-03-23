@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/23 15:57:16 by jmagand           #+#    #+#             */
-/*   Updated: 2026/03/23 16:16:18 by jmagand          ###   ########.fr       */
+/*   Created: 2026/02/16 16:55:52 by jmagand           #+#    #+#             */
+/*   Updated: 2026/03/23 15:18:11 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ private:
 public:
 	Form();
 	Form(const std::string &name);
+	~Form();
 	Form &operator=(const Form &other);
 	Form(const Form &other);
-	~Form();
 
 	const std::string &getName() const;
 	const bool &getIsSigned() const;
@@ -37,7 +37,6 @@ public:
 	const int &getExecuteInfo() const;
 
 	void beSigned(Bureaucrat &who);
-	void execute(Bureaucrat const & executor) const;
 
 	class GradeTooHighException : public std::exception
 	{
