@@ -9,9 +9,10 @@ OBJ_DIR		:= .build/
 #					FILES						 #
 #------------------------------------------------#
 NAME	= 	bureaucrat
-SRC		= 	main.cpp			\
-			Bureaucrat.cpp		\
-			Form.cpp			\
+SRC		= 	main.cpp					\
+			Bureaucrat.cpp				\
+			AForm.cpp					\
+			ShrubberyCreationForm.cpp	\
 
 SRCS	= 	$(addprefix $(SRC_DIR), $(SRC))
 

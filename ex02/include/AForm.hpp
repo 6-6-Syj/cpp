@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 15:57:16 by jmagand           #+#    #+#             */
-/*   Updated: 2026/03/23 16:08:36 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/03/23 16:40:36 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,14 @@ class AForm
 private:
 	const std::string _name;
 	bool _isSigned;
-	static const int _toSign;
-	static const int _toExecute;
+	int _toSign;
+	int _toExecute;
 
 public:
-	AForm();
-	AForm(const std::string &name);
-	~AForm();
+	AForm(const std::string &name, int toSign, int toExecute);
 	AForm &operator=(const AForm &other);
 	AForm(const AForm &other);
+	virtual ~AForm();
 
 	const std::string &getName() const;
 	const bool &getIsSigned() const;
@@ -37,7 +36,7 @@ public:
 	const int &getExecuteInfo() const;
 
 	void beSigned(Bureaucrat &who);
-	void execute(Bureaucrat const & executor) const;
+	virtual void execute(Bureaucrat const & executor) const = 0;
 
 	class GradeTooHighException : public std::exception
 	{

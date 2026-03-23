@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/23 15:59:39 by jmagand           #+#    #+#             */
-/*   Updated: 2026/03/23 16:10:03 by jmagand          ###   ########.fr       */
+/*   Created: 2026/03/23 16:00:55 by jmagand           #+#    #+#             */
+/*   Updated: 2026/03/23 16:54:51 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 #include "AForm.hpp"
 
-class RobotomyRequestForm : public AForm
+class PresidentialPardonForm : public AForm
 {
 private:
-
 public:
-	RobotomyRequestForm();
-	RobotomyRequestForm(const RobotomyRequestForm &copy);
-	RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
-	~RobotomyRequestForm();
+	PresidentialPardonForm(const std::string &target);
+	PresidentialPardonForm(const PresidentialPardonForm &copy);
+	PresidentialPardonForm &operator=(const PresidentialPardonForm &other);
+	~PresidentialPardonForm();
+
+	// virtual void execute() const;
 };

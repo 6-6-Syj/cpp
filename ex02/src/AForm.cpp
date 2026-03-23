@@ -6,19 +6,14 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 16:55:27 by jmagand           #+#    #+#             */
-/*   Updated: 2026/03/23 16:06:02 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/03/23 16:58:37 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-const int AForm::_toSign = 100;
-const int AForm::_toExecute = 50;
-
-AForm::AForm(): _name("Unknown"), _isSigned(false) {}
-
-AForm::AForm(const std::string &name) : _name(name), _isSigned(false) {}
+AForm::AForm(const std::string &name, int toSign, int toExecute) : _name(name), _isSigned(false), _toSign(toSign), _toExecute(toExecute) {}
 
 AForm::AForm(const AForm &other) : _name(other._name), _isSigned(other._isSigned) {}
 
@@ -61,7 +56,7 @@ void AForm::beSigned(Bureaucrat &who)
 
 void AForm::execute(Bureaucrat const & executor) const
 {
-	;
+	(void)executor;
 }
 
 const char *AForm::GradeTooHighException::what() const throw()

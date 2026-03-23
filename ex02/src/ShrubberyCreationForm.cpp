@@ -6,25 +6,47 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 15:58:36 by jmagand           #+#    #+#             */
-/*   Updated: 2026/03/23 16:02:31 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/03/23 17:02:16 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
+#include <iostream>
+#include <fstream>
 
-/* 
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target)
+	: AForm(target, 145, 127)
+{
+	std::string filename = target + "_shrubbery";
+	
+	std::ofstream file(filename.c_str());
+	if (!file.fail()) 
+		return ;
 
-Required grades: sign 145, exec 137
-Creates a file <target>_shrubbery in the working directory and writes ASCII trees
-inside it. 
+	file << "    /\\\n";
+    file << "   //\\\\\n";
+    file << "  ///\\\\\\\n";
+    file << " ////\\\\\\\\\n";
+    file << "/////\\\\\\\\\\\n";
+    file << "     ||\n";
+	
+	file.close();
+}
 
-*/
-
-ShrubberyCreationForm::ShrubberyCreationForm() {}
-
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy)
+	: AForm(copy), _target(copy._target) {}
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
-{ return *this; }
- 
+{
+	if (this != &other)
+        AForm::operator=(other);
+    _target = other._target;
+    return *this;
+}
+
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
+
+void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
+{
+	(void)executor;
+}
