@@ -15,6 +15,7 @@ SRC		= 	main.cpp					\
 			ShrubberyCreationForm.cpp	\
 			PresidentialPardonForm.cpp	\
 			RobotomyRequestForm.cpp		\
+			Intern.cpp					\
 
 SRCS	= 	$(addprefix $(SRC_DIR), $(SRC))
 

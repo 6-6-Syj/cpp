@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 16:46:20 by jmagand           #+#    #+#             */
-/*   Updated: 2026/03/23 15:36:28 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/07 13:37:25 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,36 +161,36 @@ static void constructorAndCopy()
 static void signSuccess()
 {
 	std::cout << "\n=== SUCCESSFUL SIGNATURE (grade 90 <= 100) ===" << std::endl;
-	Bureaucrat capable("John", 90);
-	Form contrat("ImportantContract");
+	Bureaucrat able("John", 90);
+	Form contract("ImportantContract");
 
-	std::cout << "Before: " << contrat;
-	capable.signForm(contrat);
-	std::cout << "After: " << contrat << std::endl;
+	std::cout << "Before: " << contract;
+	able.signForm(contract);
+	std::cout << "After: " << contract << std::endl;
 }
 
 static void signFail()
 {
 	std::cout << "\n=== FAILED SIGNATURE (grade 120 > 100) ===" << std::endl;
 	Bureaucrat cant("Paul", 120);
-	Form contrat("ImportantContract");
+	Form contract("ImportantContract");
 
 	std::cout << "Bureaucrat: " << cant << std::endl;
-	cant.signForm(contrat);
-	std::cout << contrat << std::endl;
+	cant.signForm(contract);
+	std::cout << contract << std::endl;
 }
 
 static void multipleSign()
 {
 	std::cout << "\n=== MULTIPLE SIGNATURES ===" << std::endl;
-	Form contrat("TestContract");
+	Form contract("TestContract");
 
 	Bureaucrat tooLow("TooLow", 140);
 	Bureaucrat perfect("Perfect", 80);
 
-	tooLow.signForm(contrat);
-	perfect.signForm(contrat);
-	perfect.signForm(contrat);
+	tooLow.signForm(contract);
+	perfect.signForm(contract);
+	perfect.signForm(contract);
 }
 
 static void boundaryCases()
