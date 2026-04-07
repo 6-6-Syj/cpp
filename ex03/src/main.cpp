@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 16:46:20 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/07 13:33:40 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/07 16:18:24 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,59 +19,102 @@ int main()
 {
     {
         Intern someRandomIntern;
-        AForm *rrf;
 
-        std::string name = "robotomy request";
-        std::string target = "RobotomyForm";
-        rrf = someRandomIntern.makeForm(name, target);
-
-        if (rrf)
         {
-            Bureaucrat test("test", 145);
-            test.signForm(*rrf);
-    
-            Bureaucrat high("high", 5);
-            high.executeForm(*rrf);
-            std::cout << std::endl;
-
-            rrf->beSigned(high);
-            high.executeForm(*rrf);
-            
-            delete rrf;
-            std::cout << std::endl;
-            
-            name = "presidential pardon";
-            target = "PardonForm";
-            rrf = someRandomIntern.makeForm(name, target);
+            AForm *rrf = someRandomIntern.makeForm("robotomy request", "RobotomyForm");
             if (rrf)
             {
-                rrf->beSigned(high);
-                high.executeForm(*rrf);
-        
-                delete rrf;            
+                std::cout << "target: " << rrf->getTarget() << std::endl;
+                try
+                {
+                    Bureaucrat test("test", 145);
+                    test.signForm(*rrf);
+                }
+                catch (std::exception const &e)
+                {
+                    std::cout << "(test) Exception: " << e.what() << std::endl;
+                }
+
+                try
+                {
+                    Bureaucrat high("high", 5);
+                    high.executeForm(*rrf);
+                }
+                catch (std::exception const &e)
+                {
+                    std::cout << "(high) Exception: " << e.what() << std::endl;
+                }
+
+                try
+                {
+                    Bureaucrat high("high", 5);
+
+                    high.signForm(*rrf);
+                    high.executeForm(*rrf);
+                }
+                catch(const std::exception& e)
+                {
+                    std::cout << "(high) Exception: " << e.what() << std::endl;
+                }
+                
+                delete rrf;
             }
             std::cout << std::endl;
-            
-            name = "shrubbery creation";
-            target = "ShrubberyForm";
-            rrf = someRandomIntern.makeForm(name, target);
-            if (rrf)
-            {
-                rrf->beSigned(high);
-                high.executeForm(*rrf);
-        
-                delete rrf;            
-            }
+        }
 
-            name = "unknown";
-            target = "UnknownForm";
-            rrf = someRandomIntern.makeForm(name, target);
+        {
+            AForm *rrf = someRandomIntern.makeForm("presidential pardon", "PardonForm");
             if (rrf)
             {
-                rrf->beSigned(high);
-                high.executeForm(*rrf);
-        
-                delete rrf;            
+                try
+                {
+                    Bureaucrat high("high", 5);
+                    high.signForm(*rrf);
+                    high.executeForm(*rrf);
+                }
+                catch (std::exception const &e)
+                {
+                    std::cout << "(high) Exception: " << e.what() << std::endl;
+                }
+                delete rrf;
+            }
+            std::cout << std::endl;
+        }
+
+        {
+            AForm *rrf = someRandomIntern.makeForm("shrubbery creation", "ShrubberyForm");
+            if (rrf)
+            {
+                try
+                {
+                    Bureaucrat high("high", 5);
+                    high.signForm(*rrf);
+                    high.executeForm(*rrf);
+                }
+                catch (std::exception const &e)
+                {
+                    std::cout << "(high) Exception: " << e.what() << std::endl;
+                }
+                delete rrf;
+            }
+            std::cout << std::endl;
+        }
+
+        {
+            AForm *rrf = someRandomIntern.makeForm("unknown", "UnknownForm");
+            if (rrf)
+            {
+                try
+                {
+                    Bureaucrat high("high", 5);
+                    high.signForm(*rrf);
+                    high.executeForm(*rrf);
+                }
+                catch (std::exception const &e)
+                {
+                    std::cout << "(high) Exception: " << e.what() << std::endl;
+                }
+                delete rrf;
             }
         }
     }

@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 16:46:20 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/07 13:37:25 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/07 15:35:27 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,8 +150,8 @@ static void constructorAndCopy()
 	std::cout << "\n=== COPY FORM ===" << std::endl;
 
 	Form original("Original");
-	Bureaucrat signer("Signer", 90);
-	signer.signForm(original);
+	Bureaucrat sign("sign", 90);
+	sign.signForm(original);
 
 	Form copy(original);
 	std::cout << "Original: " << original;
@@ -176,7 +176,15 @@ static void signFail()
 	Form contract("ImportantContract");
 
 	std::cout << "Bureaucrat: " << cant << std::endl;
-	cant.signForm(contract);
+	try
+	{
+		cant.signForm(contract);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	
 	std::cout << contract << std::endl;
 }
 
@@ -188,7 +196,15 @@ static void multipleSign()
 	Bureaucrat tooLow("TooLow", 140);
 	Bureaucrat perfect("Perfect", 80);
 
-	tooLow.signForm(contract);
+	try
+	{
+		tooLow.signForm(contract);
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << e.what() << std::endl;	
+	}
+	
 	perfect.signForm(contract);
 	perfect.signForm(contract);
 }
@@ -203,7 +219,16 @@ static void boundaryCases()
 
 	Bureaucrat oneMore("lvl101", 101);
 	Form form2("FormFail");
-	oneMore.signForm(form2);
+	
+	try
+	{
+		oneMore.signForm(form2);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	
 }
 
 static void testSecondEx()
@@ -217,7 +242,7 @@ static void testSecondEx()
 
 int main()
 {
-	// testFirstEx();
+	testFirstEx();
 	testSecondEx();
 
 	return 0;

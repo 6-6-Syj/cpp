@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 16:55:27 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/07 13:21:12 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/07 15:06:34 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ const char *AForm::GradeTooHighException::what() const throw()
 
 const char *AForm::GradeTooLowException::what() const throw()
 {
-	return ("Grade too low.");
+	return ("Grade too low to execute form");
 }
 
 std::ostream &operator<<(std::ostream &out, AForm &AForm)

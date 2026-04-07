@@ -6,20 +6,13 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 16:00:04 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/07 12:18:11 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/07 15:56:13 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 #include <iostream>
 #include <cstdlib>
-
-/*
-
-Makes some drilling noises, then informs that <target> has been robotomized
-successfully 50% of the time. Otherwise, it informs that the robotomy failed.
-
-*/
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
 	: AForm(target, 72, 45), _target(target) {}

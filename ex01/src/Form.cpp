@@ -6,26 +6,25 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 16:55:27 by jmagand           #+#    #+#             */
-/*   Updated: 2026/03/23 15:25:07 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/07 16:20:43 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-const int Form::_toSign = 100;
-const int Form::_toExecute = 50;
+Form::Form() : _name("Unknown"), _isSigned(false), _toSign(100), _toExecute(50) {}
 
-Form::Form(): _name("Unknown"), _isSigned(false) {}
+Form::Form(const std::string &name) : _name(name), _isSigned(false), _toSign(100), _toExecute(50) {}
 
-Form::Form(const std::string &name) : _name(name), _isSigned(false) {}
+Form::Form(const Form &other) : _name(other._name), _isSigned(other._isSigned), _toSign(other._toSign), _toExecute(other._toExecute) {}
 
-Form::Form(const Form &other) : _name(other._name), _isSigned(other._isSigned) {}
-
-Form& Form::operator=(const Form &other)
+Form &Form::operator=(const Form &other)
 {
 	if (this != &other)
+	{
 		this->_isSigned = other._isSigned;
+	}
 	return *this;
 }
 

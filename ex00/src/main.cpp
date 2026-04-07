@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 16:46:20 by jmagand           #+#    #+#             */
-/*   Updated: 2026/03/23 14:19:07 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/07 15:24:13 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void invalid()
 		Bureaucrat not_ok("null", 0);
 		std::cout << not_ok << std::endl;
 	}
-	catch (std::exception &e)
+	catch (Bureaucrat::GradeTooHighException &e)
 	{
 		std::cout << "Bureaucrat null: " << e.what() << std::endl;
 	}
@@ -70,7 +70,7 @@ static void invalid()
 		Bureaucrat not_ok("tooLow", 180);
 		std::cout << not_ok << std::endl;
 	}
-	catch (std::exception &e)
+	catch (Bureaucrat::GradeTooLowException &e)
 	{
 		std::cout << "Bureaucrat tooLow: " << e.what() << std::endl;
 	}
@@ -80,7 +80,7 @@ static void invalid()
 		Bureaucrat not_ok("negativeInput", -155);
 		std::cout << not_ok << std::endl;
 	}
-	catch (std::exception &e)
+	catch (Bureaucrat::GradeTooHighException &e)
 	{
 		std::cout << "Bureaucrat negativeInput: " << e.what() << std::endl;
 	}
@@ -99,7 +99,7 @@ static void decrement()
 			std::cout << ok << std::endl;
 		}
 	}
-	catch (std::exception &e)
+	catch (Bureaucrat::GradeTooLowException &e)
 	{
 		std::cout << "Bureaucrat decrementTest: " << e.what() << std::endl;
 	}
@@ -118,7 +118,7 @@ static void increment()
 			std::cout << ok << std::endl;
 		}
 	}
-	catch (std::exception &e)
+	catch (Bureaucrat::GradeTooHighException &e)
 	{
 		std::cout << "Bureaucrat incrementTest: " << e.what() << std::endl;
 	}

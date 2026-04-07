@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 16:41:56 by jmagand           #+#    #+#             */
-/*   Updated: 2026/03/23 14:13:37 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/07 14:48:47 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ const int &Bureaucrat::getGrade() const
 
 void Bureaucrat::incrementGrade()
 {
-	if (this->_grade - 1 >= 1)
+	if (this->_grade > 1)
 		this->_grade--;
 	else
 		throw GradeTooHighException();
@@ -54,7 +54,7 @@ void Bureaucrat::incrementGrade()
 
 void Bureaucrat::decrementGrade()
 {
-	if (this->_grade + 1 <= 150)
+	if (this->_grade < 150)
 		this->_grade++;
 	else
 		throw GradeTooLowException();

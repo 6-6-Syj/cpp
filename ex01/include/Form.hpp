@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 15:57:16 by jmagand           #+#    #+#             */
-/*   Updated: 2026/03/23 16:16:18 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/07 15:30:04 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ class Form
 private:
 	const std::string _name;
 	bool _isSigned;
-	static const int _toSign;
-	static const int _toExecute;
+	const int _toSign;
+	const int _toExecute;
 
 public:
 	Form();

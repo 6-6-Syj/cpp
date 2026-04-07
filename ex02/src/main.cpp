@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 16:46:20 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/07 12:35:20 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/07 15:37:53 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void testShrubberyBase()
         }
         catch (const std::exception &e)
         {
-            std::cout << "Exception: " << e.what() << std::endl;
+            std::cout << e.what() << std::endl;
         }
 
         try
@@ -48,7 +48,7 @@ void testShrubberyBase()
         }
         catch (const std::exception &e)
         {
-            std::cout << "Exception: " << e.what() << std::endl;
+            std::cout << e.what() << std::endl;
         }
 
     }
@@ -64,7 +64,7 @@ void testShrubberyBase()
     }
     catch (const std::exception &e)
     {
-        std::cout << "Exception: " << e.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
 
     try
@@ -73,7 +73,7 @@ void testShrubberyBase()
     }
     catch (const std::exception &e)
     {
-        std::cout << "Exception: " << e.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
 
     std::cout << std::endl << "=== 3. Execution tests (ShrubberyCreationForm) ===" << std::endl;
@@ -88,7 +88,7 @@ void testShrubberyBase()
     }
     catch (const std::exception &e)
     {
-        std::cout << "Exception: " << e.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
 
     try
@@ -97,7 +97,7 @@ void testShrubberyBase()
     }
     catch (const std::exception &e)
     {
-        std::cout << "Exception: " << e.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
 
     try
@@ -106,7 +106,7 @@ void testShrubberyBase()
     }
     catch (const std::exception &e)
     {
-        std::cout << "Exception: " << e.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
     std::cout << std::endl;
 }
@@ -129,7 +129,7 @@ void testRobotomy()
         }
         catch (const std::exception &e)
         {
-            std::cout << "Exception: " << e.what() << std::endl;
+            std::cout << e.what() << std::endl;
         }
     }
 
@@ -141,7 +141,7 @@ void testRobotomy()
 	}
 	catch (const std::exception &e)
 	{
-		std::cout << "Exception: " << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 
     std::cout << std::endl;
@@ -163,7 +163,7 @@ void testPresidentialPardon()
     }
     catch (const std::exception &e)
     {
-        std::cout << "Exception: " << e.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
 
     std::cout << std::endl;
@@ -174,7 +174,7 @@ void testPresidentialPardon()
     }
     catch (const std::exception &e)
     {
-        std::cout << "Exception: " << e.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
 
     std::cout << std::endl;
@@ -209,7 +209,7 @@ void testPolymorphism()
         }
         catch (const std::exception &e)
         {
-            std::cout << "Exception: " << e.what() << std::endl;
+            std::cout << e.what() << std::endl;
         }
     }
 

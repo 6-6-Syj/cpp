@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 15:57:16 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/02 11:36:09 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/07 16:02:06 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ public:
 
 	void beSigned(Bureaucrat &who);
 	virtual void execute(Bureaucrat const & executor) const = 0;
+	virtual const std::string &getTarget() const = 0;
 
 	class GradeTooHighException : public std::exception
 	{
