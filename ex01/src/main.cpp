@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 16:46:20 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/07 15:35:27 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/07 16:25:33 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ static void signFail()
 	Bureaucrat cant("Paul", 120);
 	Form contract("ImportantContract");
 
-	std::cout << "Bureaucrat: " << cant << std::endl;
+	std::cout << cant << std::endl;
 	try
 	{
 		cant.signForm(contract);

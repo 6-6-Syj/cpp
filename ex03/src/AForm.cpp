@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 16:55:27 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/07 16:12:52 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/07 16:57:48 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ AForm::AForm(const std::string &name, int toSign, int toExecute) : _name(name), 
 
 AForm::AForm(const AForm &other) : _name(other._name), _isSigned(other._isSigned) {}
 
-AForm& AForm::operator=(const AForm &other)
+AForm &AForm::operator=(const AForm &other)
 {
 	if (this != &other)
 		this->_isSigned = other._isSigned;
@@ -53,13 +53,16 @@ void AForm::beSigned(Bureaucrat &who)
 	_isSigned = true;
 }
 
-void AForm::execute(Bureaucrat const & executor) const
+void AForm::execute(Bureaucrat const &executor) const
 {
-    if (!this->getIsSigned())
-        throw std::runtime_error("Form is not signed");
+	if (!this->getIsSigned())
+		throw std::runtime_error("Form is not signed");
 
-    if (executor.getGrade() > this->getExecuteInfo())
-        throw std::runtime_error("Grade too low to execute form");
+	if (executor.getGrade() > this->getExecuteInfo())
+		throw std::runtime_error("Grade too low to execute form");
+
+	std::cout << executor.getName() << " executed \""
+			  << _name << "\"" << std::endl;
 }
 
 const char *AForm::GradeTooHighException::what() const throw()
