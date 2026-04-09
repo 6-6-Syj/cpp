@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 14:06:07 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/09 13:47:50 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/09 14:05:06 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,7 @@ void ScalarConverter::convert(const std::string &input)
 	{
 		std::string tmp = input;
 		char c = tmp[tmp.length() - 1];
+		
 		if (c == 'f' || c == 'F')
 			tmp.erase(tmp.length() - 1, 1);
 
@@ -237,14 +238,10 @@ void ScalarConverter::convert(const std::string &input)
 		else
 			i = static_cast<int>(d);
 
-		if (d > 127.0 || d < 0.0)
+		if (d > 127 || d < 0)
 			charPossible = false;
 		else
-		{
 			c = static_cast<char>(d);
-			if (!std::isprint(c))
-				charPossible = false;
-		}
 		printAll(c, i, f, d, charPossible, intPossible, floatPossible, doublePossible);
 		break;
 	}

@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 14:06:13 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/09 13:58:58 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/09 14:01:05 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 void testChars()
 {
     std::cout << "\nSingle char:" << std::endl;
+    ScalarConverter::convert("\r");
+    std::cout << std::endl;
     ScalarConverter::convert("a");
     std::cout << std::endl;
     ScalarConverter::convert("Z");
@@ -27,7 +29,7 @@ void testChars()
 void testInts()
 {
     std::cout << "\nIntegers:" << std::endl;
-    ScalarConverter::convert("0");
+    ScalarConverter::convert("22");
     std::cout << std::endl;
     ScalarConverter::convert("+42");
     std::cout << std::endl;
@@ -135,8 +137,8 @@ int main(int ac, char **av)
     }
 
     ScalarConverter::convert(input);
-    // testChars();
-    // testInts();
+    testChars();
+    testInts();
     // testFloats();
     // testDoubles();
     // testSpecials();
