@@ -6,12 +6,13 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 14:06:07 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/09 14:05:06 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/09 14:13:35 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-#include <iostream>
+#include "utils.h"
+#include "print.h"
 #include <sstream>
 #include <limits>
 
@@ -30,83 +31,7 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 
 ScalarConverter::~ScalarConverter() {}
 
-void printChar(const char &c, bool possible)
-{
-	std::cout << "char: ";
-	if (!possible)
-		std::cout << "impossible" << std::endl;
-	else if (!std::isprint(c))
-		std::cout << "Non displayable" << std::endl;
-	else
-		std::cout << "\'" << c << "\'" << std::endl;
-}
-
-void printInt(const int &i, bool possible)
-{
-	std::cout << "int: ";
-	if (!possible)
-		std::cout << "impossible" << std::endl;
-	else
-		std::cout << i << std::endl;
-}
-
-void printFloat(const float &f, bool possible)
-{
-	std::cout << "float: ";
-	if (!possible)
-		std::cout << "impossible" << std::endl;
-	else
-		std::cout << f << "f" << std::endl;
-}
-
-void printDouble(const double &d, bool possible)
-{
-	std::cout << "double: ";
-	if (!possible)
-		std::cout << "impossible" << std::endl;
-	else
-		std::cout << d << std::endl;
-}
-
-void printAll(char c, int i, float f, double d,
-			  bool charPossible, bool intPossible, bool floatPossible, bool doublePossible)
-{
-	printChar(c, charPossible);
-	printInt(i, intPossible);
-	printFloat(f, floatPossible);
-	printDouble(d, doublePossible);
-}
-
-bool isSpec(const std::string &s)
-{
-	if (s == "inf" || s == "inff" || s == "+inf" ||
-		s == "+inff" || s == "-inf" || s == "-inff" || s == "nan" || s == "nanf")
-		return true;
-	else
-		return false;
-}
-
-bool hasDup(const std::string &s)
-{
-	const char symbols[] = {'+', '-', '.', 'f', 'F'};
-	size_t nb = sizeof(symbols) / sizeof(symbols[0]);
-
-	for (size_t sym = 0; sym < nb; ++sym)
-	{
-		char c = symbols[sym];
-		int count = 0;
-		for (size_t i = 0; i < s.size(); i++)
-		{
-			if (s[i] == c)
-				count++;
-		}
-		if (count >= 2)
-			return true;
-	}
-	return false;
-}
-
-type getType(const std::string &input)
+static type getType(const std::string &input)
 {
 	if (isSpec(input))
 		return SPECIAL;
