@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 13:42:55 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/09 11:28:23 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/09 13:44:10 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,8 @@ private:
 	ScalarConverter();
 	ScalarConverter(const ScalarConverter &copy);
 	ScalarConverter &operator=(const ScalarConverter &other);
-
-public:
 	~ScalarConverter();
 
+public:
 	static void convert(const std::string &input);
 };
