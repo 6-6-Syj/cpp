@@ -6,28 +6,26 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 14:31:03 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/09 14:56:00 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/09 15:18:10 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
-
+#include "Data.hpp"
 #include <iostream>
 
-int main()
+int main(void)
 {
-	Data d1 = {42, "test"};
-	Data *ptrD1 = &d1;
+    Data* ptrD1 = new Data();
 
-	uintptr_t raw = Serializer::serialize(ptrD1);
-	Data *ptrD2 = Serializer::deserialize(raw);
+    unsigned long long raw = Serializer::serialize(ptrD1);   // ptr → int
+    Data* ptrD2 = Serializer::deserialize(raw);              // int → ptr
 
+    std::cout << "ptrD1 addr: " << ptrD1 << std::endl;
+    std::cout << "ptrD2 addr: " << ptrD2 << std::endl;
 	if (ptrD1 == ptrD2)
-		std::cout << "OK '" << ptrD1 << '\'' << std::endl;
-	else
-		std::cout << "KO" << std::endl
-				  << "ptrD1: \'" << ptrD1 << '\'' << std::endl
-				  << "ptrD2: \'" << ptrD2 << '\'' << std::endl;
+   		std::cout << "Same" << std::endl;
 
-	return 0;
+    delete ptrD1;
+    return 0;
 }

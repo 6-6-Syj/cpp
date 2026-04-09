@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.hpp                                     :+:      :+:    :+:   */
+/*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/09 14:07:34 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/09 15:12:52 by jmagand          ###   ########.fr       */
+/*   Created: 2026/04/09 15:13:08 by jmagand           #+#    #+#             */
+/*   Updated: 2026/04/09 15:15:22 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <string>
-
-class Data;
-
-class Serializer
+class Data
 {
 private:
-	Serializer();
-	Serializer(const Serializer &copy);
-	Serializer &operator=(const Serializer &other);
-	~Serializer();
+	int _id;
 
 public:
-	static unsigned long long serialize(Data *ptr);
-	static Data *deserialize(unsigned long long raw);
+	Data(void);
+	Data(const Data &other);
+	Data &operator=(const Data &copy);
+	~Data(void);
 };

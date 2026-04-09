@@ -8,9 +8,10 @@ OBJ_DIR		:= .build/
 #------------------------------------------------#
 #					FILES						 #
 #------------------------------------------------#
-NAME	= 	convert
+NAME	= 	serializer
 SRC		= 	main.cpp					\
 			Serializer.cpp				\
+			Data.cpp					\
 
 SRCS	= 	$(addprefix $(SRC_DIR), $(SRC))
 
