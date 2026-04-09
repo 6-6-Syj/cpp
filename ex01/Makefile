@@ -10,7 +10,7 @@ OBJ_DIR		:= .build/
 #------------------------------------------------#
 NAME	= 	convert
 SRC		= 	main.cpp					\
-			ScalarConverter.cpp			\
+			Serializer.cpp				\
 
 SRCS	= 	$(addprefix $(SRC_DIR), $(SRC))
 
