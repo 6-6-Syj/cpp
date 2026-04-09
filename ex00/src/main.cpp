@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 14:06:13 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/09 14:01:05 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/09 14:05:55 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,8 @@ int main(int ac, char **av)
     }
 
     ScalarConverter::convert(input);
-    testChars();
-    testInts();
+    // testChars();
+    // testInts();
     // testFloats();
     // testDoubles();
     // testSpecials();
