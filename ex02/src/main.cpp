@@ -6,12 +6,13 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 11:12:20 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/16 13:26:17 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/16 15:57:45 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <Array.hpp>
+#include <stdlib.h>
 
 #define MAX_VAL 750
 int main(int, char**)
@@ -25,11 +26,10 @@ int main(int, char**)
         numbers[i] = value;
         mirror[i] = value;
     }
-    // //SCOPE
-    // {
-    //     Array<int> tmp = numbers;
-    //     Array<int> test(tmp);
-    // }
+    {
+        Array<int> tmp = numbers;
+        Array<int> test(tmp);
+    }
 
     // for (int i = 0; i < MAX_VAL; i++)
     // {

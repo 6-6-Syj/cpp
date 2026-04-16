@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 12:29:08 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/16 13:28:37 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/16 15:53:13 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ public:
 	Array(const Array &copy);
 	Array &operator=(const Array &other);
 	~Array();
+
+	T &operator[](unsigned int index);
+	const T &operator[](unsigned int index) const;
 };
 
 #include "Array.tpp"
