@@ -8,7 +8,7 @@ OBJ_DIR		:= .build/
 #------------------------------------------------#
 #					FILES						 #
 #------------------------------------------------#
-NAME	= 	template
+NAME	= 	find
 SRC		= 	main.cpp					\
 
 SRCS	= 	$(addprefix $(SRC_DIR), $(SRC))
