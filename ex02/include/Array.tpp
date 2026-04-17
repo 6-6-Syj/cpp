@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 12:51:29 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/16 15:57:15 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/17 12:26:50 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,22 @@ Array<T>::~Array()
 template <typename T>
 T &Array<T>::operator[](unsigned int index)
 {
-	// try and catch ?
-	if (index > _size)
-		throw (std::runtime_error("index: Out of bounds."));
+	if (index >= _size || index < 0)
+		throw(std::out_of_range("Out of bounds."));
 	return (_content[index]);
 }
 
 template <typename T>
 const T &Array<T>::operator[](unsigned int index) const
 {
-	if (index >= _size)
-		throw (std::runtime_error("index: Out of bounds."));
+	if (index >= _size || index < 0)
+		throw(std::out_of_range("(const) Out of bounds."));
 	return _content[index];
+}
+
+template <typename T>
+unsigned int Array<T>::size() const
+{
+	// std::cout << _size << std::endl;
+	return _size;
 }
