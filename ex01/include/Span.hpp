@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.h                                         :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/17 12:36:28 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/20 09:23:05 by jmagand          ###   ########.fr       */
+/*   Created: 2026/04/20 09:25:19 by jmagand           #+#    #+#             */
+/*   Updated: 2026/04/20 09:56:31 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <algorithm>
-#include <stdexcept>
-#include <sstream>
-
-template <typename T>
-typename T::iterator easyfind(T container, int value)
+class Span
 {
-	typename T::iterator it = std::find(container.begin(), container.end(), value);
+private:
+	unsigned int _size;
+	int *_arr;
 	
-	if (it == container.end())
-	{
-		std::ostringstream oss;
-        oss << "Value " << value << " hasn't been found";
-        throw std::out_of_range(oss.str());
-	}
-	return it;
-}
+public:
+	Span();
+	Span(unsigned int size);
+	Span(const Span &copy);
+	Span &operator=(const Span &other);
+	~Span();
+};

@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.h                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/17 12:36:28 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/20 09:23:05 by jmagand          ###   ########.fr       */
+/*   Created: 2026/04/16 11:12:20 by jmagand           #+#    #+#             */
+/*   Updated: 2026/04/20 09:40:06 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "Span.hpp"
+#include <iostream>
 
-#include <algorithm>
-#include <stdexcept>
-#include <sstream>
-
-template <typename T>
-typename T::iterator easyfind(T container, int value)
+int main(void)
 {
-	typename T::iterator it = std::find(container.begin(), container.end(), value);
-	
-	if (it == container.end())
-	{
-		std::ostringstream oss;
-        oss << "Value " << value << " hasn't been found";
-        throw std::out_of_range(oss.str());
-	}
-	return it;
+    std::cout << "Hola!" << std::endl;
+    return 0;
 }
