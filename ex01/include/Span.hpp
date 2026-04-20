@@ -6,19 +6,20 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 09:25:19 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/20 11:06:26 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/20 14:10:54 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include <vector>
 
 class Span
 {
 private:
 	unsigned int _size;
-	int *_arr;
+	std::vector<int> _arr;
 	
 public:
 	Span();
@@ -27,11 +28,11 @@ public:
 	Span &operator=(const Span &other);
 	~Span();
 	
-	Span &operator[](unsigned int x);
+	int &getValue(unsigned int &idx) const;
+	unsigned int &getSize();
 	void addNumber(int x);
+	int shortestSpan();
+	int longestSpan();
 };
 
-ostream& operator<<(const Span sp)
-{
-	
-}
+// std::ostream &operator<<(std::ostream &out, Span &sp);
