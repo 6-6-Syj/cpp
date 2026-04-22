@@ -8,7 +8,7 @@ OBJ_DIR		:= .build/
 #------------------------------------------------#
 #					FILES						 #
 #------------------------------------------------#
-NAME	= 	span
+NAME	= 	mstack
 SRC		= 	main.cpp					\
 			MutantStack.tpp				\
 

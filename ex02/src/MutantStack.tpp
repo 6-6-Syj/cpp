@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 15:34:02 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/22 09:32:10 by jmagand          ###   ########.fr       */
+/*   Created: 2026/04/22 09:40:01 by jmagand           #+#    #+#             */
+/*   Updated: 2026/04/22 09:40:03 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MutantStack.hpp"
 
-template <typename T, class Container = std::deque<T> >
-MutantStack() {}
+template <typename T, class Container>
+MutantStack<T, Container>::MutantStack() {}
 
 // MutantStack::MutantStack(const MutantStack &copy) {}
 
