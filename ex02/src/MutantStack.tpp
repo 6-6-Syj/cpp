@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MutantStack.cpp                                    :+:      :+:    :+:   */
+/*   MutantStack.tpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 15:34:02 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/22 09:28:10 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/22 09:32:10 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MutantStack.hpp"
 
-MutantStack::MutantStack() {}
+template <typename T, class Container = std::deque<T> >
+MutantStack() {}
 
 // MutantStack::MutantStack(const MutantStack &copy) {}
 
