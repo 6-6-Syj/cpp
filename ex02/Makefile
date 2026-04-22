@@ -10,7 +10,7 @@ OBJ_DIR		:= .build/
 #------------------------------------------------#
 NAME	= 	span
 SRC		= 	main.cpp					\
-			Span.cpp					\
+			MutantStack.cpp				\
 
 SRCS	= 	$(addprefix $(SRC_DIR), $(SRC))
 

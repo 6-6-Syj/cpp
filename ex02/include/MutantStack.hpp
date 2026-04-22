@@ -6,20 +6,28 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 15:33:08 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/21 16:10:49 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/04/22 09:26:37 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-class MutantStack
+#include <deque>
+#include <stack>
+
+template <typename T, class Container = std::deque<T> >
+class MutantStack : public std::stack<T, Container>
 {
 private:
-	// type _attribut;
 
 public:
+	typedef typename Container::iterator          _it;
+	typedef typename Container::const_iterator    _constIt;
+	
 	MutantStack();
 	MutantStack(const MutantStack &copy);
 	MutantStack &operator=(const MutantStack &other);
 	~MutantStack();
+
+	_it begin();
 };
