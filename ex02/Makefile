@@ -10,7 +10,6 @@ OBJ_DIR		:= .build/
 #------------------------------------------------#
 NAME	= 	mstack
 SRC		= 	main.cpp					\
-			MutantStack.tpp				\
 
 SRCS	= 	$(addprefix $(SRC_DIR), $(SRC))
 
