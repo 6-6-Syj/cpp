@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/09 16:32:39 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/09 16:32:57 by jmagand          ###   ########.fr       */
+/*   Created: 2026/04/29 10:10:41 by jmagand           #+#    #+#             */
+/*   Updated: 2026/04/29 10:11:16 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main(int ac, char **av)
+#pragma once
+
+#include <map>
+
+class BitcoinExchange
 {
-	return 0;
-}
+	private:
+	
+	public:
+};
