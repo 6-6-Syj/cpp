@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 10:10:13 by jmagand           #+#    #+#             */
-/*   Updated: 2026/05/11 11:44:24 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/11 14:40:43 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bool BitcoinExchange::fillMap(std::string &s)
 	if (!std::getline(iss >> std::ws, date, '|') ||
 		!std::getline(iss >> std::ws, value))
 	{
-		return false;
+		throw "Error: bad input => ";
 	}
 	
 	if (date.length() != 11)

@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 10:13:12 by jmagand           #+#    #+#             */
-/*   Updated: 2026/05/11 11:39:44 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/11 14:37:53 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		std::cout << "Usage: ./btc <file>" << std::endl;
+		std::cout << "Error: could not open file." << std::endl;
 		return 1;
  	}
 	 
@@ -27,7 +27,7 @@ int main(int ac, char **av)
 	
 	if (!file.is_open())
 	{
-		std::cout << "\"" << av[1] << "\" not found !" << std::endl;
+		std::cout << "Error: could not open file." << std::endl;
 		return 1;
 	}
 
@@ -47,11 +47,19 @@ int main(int ac, char **av)
     {
         // std::cout << line << std::endl;
 
-        
-        if (!btc.fillMap(line))
-        {
-            std::cout << "OUPS: " << line << std::endl;
-        }
+        try
+		{
+			btc.fillMap(line);
+		}
+		catch(const std::exception& e)
+		{
+			std::cout << e.what() << '\n';
+		}
+		
+        // if (!btc.fillMap(line))
+        // {
+        //     std::cout << "OUPS: " << line << std::endl;
+        // }
         
     }
 	
