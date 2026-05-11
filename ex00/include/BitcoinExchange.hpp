@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 10:10:41 by jmagand           #+#    #+#             */
-/*   Updated: 2026/05/11 11:28:20 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/11 14:46:58 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ public:
 	BitcoinExchange();
 	~BitcoinExchange();
 
-	bool fillMap(std::string &s);
+	bool fillMap(const std::string &s);
 };
