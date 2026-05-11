@@ -10,6 +10,7 @@ OBJ_DIR		:= .build/
 #------------------------------------------------#
 NAME	= 	btc
 SRC		= 	main.cpp					\
+			BitcoinExchange.cpp			\
 
 SRCS	= 	$(addprefix $(SRC_DIR), $(SRC))
 
