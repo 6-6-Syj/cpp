@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 11:12:20 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/17 12:28:38 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/18 09:38:01 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,43 @@
 #include <Array.hpp>
 #include <stdlib.h>
 
-#define MAX_VAL 750
-int main(int, char**)
+int main()
 {
+    const int MAX_VAL = 1000;
+    
     Array<int> numbers(MAX_VAL);
+    Array<int> assign(MAX_VAL / 2);
+
     const Array<int> constnumbers(MAX_VAL);
-    int* mirror = new int[MAX_VAL];
+
     srand(time(NULL));
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        const int value = rand();
-        numbers[i] = value;
-        mirror[i] = value;
-    }
-    {
-        Array<int> tmp = numbers;
-        Array<int> test(tmp);
-    }
 
     for (int i = 0; i < MAX_VAL; i++)
     {
-        // std::cout << "[" << i << "] " << mirror[i] << std::endl;
-        if (mirror[i] != numbers[i])
+        int value = rand();
+        numbers[i] = value;
+    }
+
+    Array<int> copy(numbers);
+    assign = numbers;
+
+    // for (int i = 0; i < MAX_VAL; i++)
+    //     std::cout << "[" << i << "]: " << assign[i] << std::endl;
+    
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        if (numbers[i] != copy[i] || numbers[i] != assign[i])
         {
-            std::cerr << "didn't save the same value!!" << std::endl;
+            std::cout << "copy/assignment failed at " << i << std::endl;
             return 1;
         }
+    }
+
+    numbers[0] = 42;
+    if (copy[0] == numbers[0] || assign[0] == numbers[0])
+    {
+        std::cout << "deep copy failed" << std::endl;
+        return 1;
     }
     
     try
@@ -48,7 +59,7 @@ int main(int, char**)
     }
     catch(const std::exception& e)
     {
-        std::cerr << "Index: " << e.what() << '\n';
+        std::cout << "Index: " << e.what() << '\n';
     }
     
     try
@@ -57,7 +68,7 @@ int main(int, char**)
     }
     catch(const std::exception& e)
     {
-        std::cerr << "Index: " << e.what() << '\n';
+        std::cout << "Index: " << e.what() << '\n';
     }
 
     try
@@ -66,15 +77,8 @@ int main(int, char**)
     }
     catch(const std::exception& e)
     {
-        std::cerr << "Index: " << e.what() << '\n';
+        std::cout << "Index: " << e.what() << '\n';
     }
-
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        numbers[i] = rand();
-    }
-    
-    delete [] mirror;
     
     return 0;
 }
