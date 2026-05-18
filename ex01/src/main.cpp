@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 11:12:20 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/21 15:30:44 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/18 14:01:05 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void testRange(Span& sp)
 {
-    Span sp3 = Span(99999);
+    Span sp3 = Span(999);
 
     try
     {
@@ -47,7 +47,7 @@ void testOverflow()
     }
     catch(const std::exception& e)
     {
-        std::cout << e.what() << std::endl;
+        std::cout << e.what() << std::endl << std::endl;
     }
 }
 
@@ -55,11 +55,11 @@ void testSubject(Span& sp)
 {
     try
     {
-        sp.addNumber(-5);
-        sp.addNumber(11);
-        sp.addNumber(-17);
-        sp.addNumber(14);
         sp.addNumber(6);
+        sp.addNumber(3);
+        sp.addNumber(17);
+        sp.addNumber(9);
+        sp.addNumber(11);
         sp.addNumber(0);
     }
     catch (const std::exception &e)
@@ -67,7 +67,7 @@ void testSubject(Span& sp)
         std::cout << "addNumber: " << e.what() << std::endl;
     }
     std::cout << "shortest: " << sp.shortestSpan() << std::endl;
-    std::cout << "longest: " << sp.longestSpan() << std::endl;
+    std::cout << "longest: " << sp.longestSpan() << std::endl << std::endl;
 }
 
 int main()

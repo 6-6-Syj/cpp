@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 11:12:20 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/22 12:52:40 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/18 14:25:01 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ static void testSubject(MutantStack<int> &mstack)
         std::cout << *it << std::endl;
         ++it;
     }
+    std::stack<int> s(mstack);
+    return;
 }
 
 static void testCopyConstructor()
