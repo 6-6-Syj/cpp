@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 11:12:20 by jmagand           #+#    #+#             */
-/*   Updated: 2026/05/18 13:30:20 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/18 13:52:31 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int main(void)
 		vec.push_back(3);
 		vec.push_back(7);
 	
-        easyfind(vec, -5);
+        std::cout << "vec: " << *easyfind(vec, -5) << std::endl;
     }
     catch (const std::exception &e)
     {
-        std::cout << "vec: " << e.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
 
     try
@@ -41,11 +41,11 @@ int main(void)
 		lst.push_back(30);
     	lst.push_back(40);
 	
-        easyfind(lst, 250);
+		std::cout << "lst: " << *easyfind(lst, 10) << std::endl;
     }
     catch (const std::exception &e)
     {
-        std::cout << "lst: " << e.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
     
     try
@@ -54,11 +54,11 @@ int main(void)
 		deq.push_back(0);
 		deq.push_back(__INT_MAX__);
 		
-        easyfind(deq, 1);
+        std::cout << "deq: " << *easyfind(deq, 1) << std::endl;
     }
     catch (const std::exception &e)
     {
-        std::cout << "deq: " << e.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
 
     return 0;
