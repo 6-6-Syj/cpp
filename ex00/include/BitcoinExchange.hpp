@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 10:10:41 by jmagand           #+#    #+#             */
-/*   Updated: 2026/05/18 11:38:00 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/18 16:27:53 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,14 @@
 class BitcoinExchange
 {
 private:
-	std::map<std::string, int> _map;
+	std::map<std::string, double> _dataBase;
 	
-	double getValue(std::istringstream &iss);
-	std::string getDate(std::istringstream &iss);
 	bool isValidDate(int year, int month, int day);
+	std::string getDate(std::istringstream &iss);
+	double getValue(std::istringstream &iss);
+
+	void loadDB();
+	double getRate(const std::string &date) const;
 
 public:
 	BitcoinExchange();
