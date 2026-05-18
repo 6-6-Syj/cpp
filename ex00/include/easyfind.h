@@ -6,15 +6,13 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 12:36:28 by jmagand           #+#    #+#             */
-/*   Updated: 2026/04/20 09:23:05 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/18 13:33:09 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <algorithm>
-#include <stdexcept>
-#include <sstream>
 
 template <typename T>
 typename T::iterator easyfind(T container, int value)
@@ -22,10 +20,6 @@ typename T::iterator easyfind(T container, int value)
 	typename T::iterator it = std::find(container.begin(), container.end(), value);
 	
 	if (it == container.end())
-	{
-		std::ostringstream oss;
-        oss << "Value " << value << " hasn't been found";
         throw std::out_of_range(oss.str());
-	}
 	return it;
 }
