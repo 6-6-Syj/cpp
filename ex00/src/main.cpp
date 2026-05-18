@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 10:13:12 by jmagand           #+#    #+#             */
-/*   Updated: 2026/05/13 10:54:33 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/18 11:38:28 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,6 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-
-static void isHeaderOk(std::string &line)
-{
-	std::istringstream hss(line);
-	std::string date;
-	std::string pipe;
-	std::string value;
-
-	hss >> std::ws >> date >> pipe >> value;
-	if (date != "date" || pipe != "|" || value != "value")
-		throw std::runtime_error("incorrect header");
-}
 
 int main(int ac, char **av)
 {
@@ -44,9 +32,9 @@ int main(int ac, char **av)
 		std::string line;
 		std::getline(file, line);
 
-		isHeaderOk(line);
-
 		BitcoinExchange btc;
+		
+		btc.isHeaderOk(line);
 
 		while (getline(file, line))
 		{
