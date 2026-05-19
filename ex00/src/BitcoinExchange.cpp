@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 10:10:13 by jmagand           #+#    #+#             */
-/*   Updated: 2026/05/18 16:28:45 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/19 15:41:45 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ BitcoinExchange::BitcoinExchange() {};
 
 BitcoinExchange::~BitcoinExchange() {};
 
-bool BitcoinExchange::isValidDate(int year, int month, int day)
+bool BitcoinExchange::isValidDate(int year, int month, int day) const
 {
 	static const int normalDays[] = {0, 31, 28, 31, 30, 31, 30,
 									 31, 31, 30, 31, 30, 31};
@@ -47,7 +47,7 @@ bool BitcoinExchange::isValidDate(int year, int month, int day)
 	return true;
 }
 
-std::string BitcoinExchange::getDate(std::istringstream &iss)
+std::string BitcoinExchange::getDate(std::istringstream &iss) const
 {
 	std::string date;
 	std::getline((iss >> std::ws), date, ' ');
@@ -78,7 +78,7 @@ std::string BitcoinExchange::getDate(std::istringstream &iss)
 	return date;
 }
 
-double BitcoinExchange::getValue(std::istringstream &iss)
+double BitcoinExchange::getValue(std::istringstream &iss) const
 {
 	std::string valueStr;
 	std::getline((iss >> std::ws), valueStr);
@@ -137,27 +137,32 @@ double BitcoinExchange::getRate(const std::string &date) const
 	return rate;
 }
 
-
-/* Pas bon le fillmap ! */
-/* void BitcoinExchange::fillMap(const std::string &s)
+void BitcoinExchange::exchange(std::ifstream &file) const
 {
-	if (s.empty() || s.find_first_not_of(" \t\r\n") == std::string::npos)
-		return;
+	std::string line;
+	
+	while (getline(file, line))
+		{
+			try
+			{
+				std::cout << line << std::endl;
+				// btc.fillMap(line);
+			}
+			catch (const std::exception &e)
+			{
+				std::cout << "Error: " << e.what() << std::endl;
+			}
+		}
+}
 
-	std::istringstream iss(s);
-	std::string date = getDate(iss);
-
-	std::string pipe;
-	if (!(iss >> pipe) || pipe != "|")
-		throw std::runtime_error("bad input");
-
-	double value = getValue(iss);
-
-	// _dataBase[date] = value;
-} */
-
-void BitcoinExchange::isHeaderOk(std::string &line)
+void isHeaderOk(std::ifstream &file, std::string arg)
 {
+	if (!file.is_open())
+			throw std::runtime_error("could not open file '" + arg + "'");
+									 
+	std::string line;
+	std::getline(file, line);
+	
 	std::istringstream hss(line);
 	std::string date;
 	std::string pipe;

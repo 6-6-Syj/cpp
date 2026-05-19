@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 10:13:12 by jmagand           #+#    #+#             */
-/*   Updated: 2026/05/18 15:32:59 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/19 15:40:15 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,38 +22,14 @@ int main(int ac, char **av)
 	{
 		if (ac != 2)
 			throw std::runtime_error("could not open file");
-
+			
 		std::ifstream file(av[1]);
-
-		if (!file.is_open())
-			throw std::runtime_error("could not open file '" +
-									 static_cast<std::string>(av[1]) + "'");
-
-		std::string line;
-		std::getline(file, line);
-
-		BitcoinExchange btc;
+		isHeaderOk(file, static_cast<std::string>(av[1]));
 		
-		btc.isHeaderOk(line);
-
-		while (getline(file, line))
-		{
-			// std::cout << line << std::endl;
-
-			try
-			{
-				btc.fillMap(line);
-			}
-			catch (const std::exception &e)
-			{
-				std::cout << "Error: " << e.what() << std::endl;
-			}
-
-			// if (!btc.fillMap(line))
-			// {
-			//     std::cout << "OUPS: " << line << std::endl;
-			// }
-		}
+		BitcoinExchange btc;
+		btc.loadDB();
+		
+		btc.exchange(file);
 
 		file.close();
 	}
