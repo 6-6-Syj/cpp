@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 10:10:13 by jmagand           #+#    #+#             */
-/*   Updated: 2026/05/19 15:41:45 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/20 09:37:43 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ std::string BitcoinExchange::getDate(std::istringstream &iss) const
 
 	date.erase(date.find_last_not_of(" \t") + 1);
 
+	if (date.empty())
+		return date;
+	// std::cout << date.length() << std::endl;
 	if (date.length() != 10)
 		throw std::runtime_error("bad input => " + date);
 
@@ -73,7 +76,7 @@ std::string BitcoinExchange::getDate(std::istringstream &iss) const
 	int day = std::atoi(date.substr(8, 2).c_str());
 
 	if (year < 2009 || month < 1 || month > 12 || !isValidDate(year, month, day))
-		throw std::runtime_error("invalid date => " + date);
+		throw std::runtime_error("bad input => " + date);
 
 	return date;
 }
@@ -99,16 +102,64 @@ double BitcoinExchange::getValue(std::istringstream &iss) const
 	return value;
 }
 
+
+double BitcoinExchange::getRate(const std::string &date) const
+{
+    std::map<std::string, double>::const_iterator it = _dataBase.lower_bound(date);
+
+    if (it != _dataBase.end() && it->first == date)
+        return it->second;
+
+    if (it == _dataBase.begin())
+        throw std::runtime_error("date " + date + " is too old");
+
+    if (it == _dataBase.end() || it->first > date)
+        --it;
+
+    return it->second;
+}
+
+void BitcoinExchange::exchange(std::ifstream &file) const
+{
+	std::string line;
+	
+	std::string date;
+	std::string pipe;
+	double value;
+	
+	while (getline(file, line))
+	{
+		try
+		{
+			std::istringstream iss(line);
+			
+			date = getDate(iss);
+			if (date.empty())
+				continue ;
+				
+			iss >> pipe;
+			
+			value = getValue(iss);
+			double res = getRate(date) * value;
+			
+			std::cout << date << " => " << value << " = " << res << std::endl;
+		}
+		catch (const std::exception &e)
+		{
+			std::cout << "Error: " << e.what() << std::endl;
+		}
+	}
+}
+
 void BitcoinExchange::loadDB()
 {
-	std::ifstream file("data.csv");
+	std::ifstream fileCSV("data.csv");
 
-	if (!file.is_open())
+	if (!fileCSV.is_open())
 		throw std::runtime_error("could not open database file");
 
 	std::string line;
-	std::getline(file, line);
-	while (getline(file, line))
+	while (getline(fileCSV, line))
 	{
 		std::stringstream ss(line);
 		std::string date;
@@ -120,39 +171,7 @@ void BitcoinExchange::loadDB()
 				_dataBase[date] = std::atof(rate.c_str());
 		}
 	}
-	file.close();
-}
-
-double BitcoinExchange::getRate(const std::string &date) const
-{
-	double rate = -1;
-	for (std::map<std::string, double>::const_iterator it = _dataBase.begin();
-		 it != _dataBase.end(); ++it)
-	{
-		if (date > it->first)
-			rate = it->second;
-		else
-			break ;
-	}
-	return rate;
-}
-
-void BitcoinExchange::exchange(std::ifstream &file) const
-{
-	std::string line;
-	
-	while (getline(file, line))
-		{
-			try
-			{
-				std::cout << line << std::endl;
-				// btc.fillMap(line);
-			}
-			catch (const std::exception &e)
-			{
-				std::cout << "Error: " << e.what() << std::endl;
-			}
-		}
+	fileCSV.close();
 }
 
 void isHeaderOk(std::ifstream &file, std::string arg)

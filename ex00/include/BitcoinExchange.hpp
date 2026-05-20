@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 10:10:41 by jmagand           #+#    #+#             */
-/*   Updated: 2026/05/19 15:42:03 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/20 08:58:31 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ public:
 	BitcoinExchange();
 	~BitcoinExchange();
 
-	void loadDB();
 	void exchange(std::ifstream &file) const;
+	void loadDB();
 };
 
 void isHeaderOk(std::ifstream &file, std::string arg);

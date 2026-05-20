@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 10:13:12 by jmagand           #+#    #+#             */
-/*   Updated: 2026/05/19 15:40:15 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/20 08:58:50 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,9 @@ int main(int ac, char **av)
 		std::ifstream file(av[1]);
 		isHeaderOk(file, static_cast<std::string>(av[1]));
 		
-		BitcoinExchange btc;
+		BitcoinExchange btc;		
 		btc.loadDB();
-		
 		btc.exchange(file);
-
 		file.close();
 	}
 	catch (const std::exception &e)
