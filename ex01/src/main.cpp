@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 09:08:49 by jmagand           #+#    #+#             */
-/*   Updated: 2026/05/21 14:36:17 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/21 15:05:19 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		std::cout << "Usage: ./RPN \"inverted Polish mathematical expression\"" << std::endl
+		std::cerr << "Usage: ./RPN \"inverted Polish mathematical expression\"" << std::endl
 					<< "e.g.: ./RPN \"7 7 * 7 -\"" << std::endl;
 		return 1;
 	}
@@ -31,7 +31,7 @@ int main(int ac, char **av)
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << e.what() << '\n';
+		std::cerr << e.what() << '\n';
 	}
 	
 
