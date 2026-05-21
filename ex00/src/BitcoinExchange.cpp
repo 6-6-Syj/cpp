@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 10:10:13 by jmagand           #+#    #+#             */
-/*   Updated: 2026/05/20 09:37:43 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/21 09:02:52 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ std::string BitcoinExchange::getDate(std::istringstream &iss) const
 
 	if (date.empty())
 		return date;
-	// std::cout << date.length() << std::endl;
 	if (date.length() != 10)
 		throw std::runtime_error("bad input => " + date);
 
@@ -121,10 +120,7 @@ double BitcoinExchange::getRate(const std::string &date) const
 
 void BitcoinExchange::exchange(std::ifstream &file) const
 {
-	std::string line;
-	
-	std::string date;
-	std::string pipe;
+	std::string line, date, pipe;
 	double value;
 	
 	while (getline(file, line))
@@ -162,8 +158,7 @@ void BitcoinExchange::loadDB()
 	while (getline(fileCSV, line))
 	{
 		std::stringstream ss(line);
-		std::string date;
-		std::string rate;
+		std::string date, rate;
 
 		if (std::getline(ss, date, ','))
 		{
@@ -179,13 +174,9 @@ void isHeaderOk(std::ifstream &file, std::string arg)
 	if (!file.is_open())
 			throw std::runtime_error("could not open file '" + arg + "'");
 									 
-	std::string line;
+	std::string line, date, pipe, value;
 	std::getline(file, line);
-	
 	std::istringstream hss(line);
-	std::string date;
-	std::string pipe;
-	std::string value;
 
 	if (!(hss >> date >> pipe >> value) || date != "date" || pipe != "|" || value != "value")
 		throw std::runtime_error("incorrect header");
