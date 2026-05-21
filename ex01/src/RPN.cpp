@@ -6,13 +6,14 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 09:08:52 by jmagand           #+#    #+#             */
-/*   Updated: 2026/05/21 11:55:01 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/21 14:41:03 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 #include <iostream>
 #include <sstream>
+#include <limits>
 
 RPN::RPN() {}
 
@@ -59,10 +60,13 @@ void RPN::process(std::string &arg)
 		}
 		else
 		{
-			std::istringstream intss(tmp);
-			int x;
-			intss >> x;
-			_values.push(x);
+			std::istringstream dss(tmp);
+			double d;
+			dss >> d;
+			if (d > std::numeric_limits<int>::max() ||
+				d < std::numeric_limits<int>::min())
+				throw std::out_of_range("Result overflowed.");
+			_values.push(d);
 		}
 	}
 
