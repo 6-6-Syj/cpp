@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 15:00:52 by jmagand           #+#    #+#             */
-/*   Updated: 2026/05/21 15:42:44 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/21 15:55:42 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,8 @@ public:
 	PmergeMe(const PmergeMe &copy);
 	PmergeMe &operator=(const PmergeMe &other);
 	~PmergeMe();
+
+	// void fill();
 };
+
+void parse(int ac, char **av);

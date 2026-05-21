@@ -6,14 +6,12 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 15:01:03 by jmagand           #+#    #+#             */
-/*   Updated: 2026/05/21 15:35:54 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/21 15:55:45 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include "iostream"
-#include "sstream"
-#include "limits"
 
 int main(int ac, char **av)
 {
@@ -30,21 +28,10 @@ int main(int ac, char **av)
 
 	try
 	{
-		for (int i = 1; av[i]; i++)
-		{
-			std::istringstream arg(av[i]);
-			std::string err(av[i]);
-			double d;
-
-			if (!(arg >> d))
-				throw std::out_of_range("'" + err + "' must be an int");
-
-			if (d > static_cast<double>(std::numeric_limits<int>::max()))
-				throw std::out_of_range("'" + err + "' is higher than INT_MAX");
-
-			if (d < 0)
-				throw std::out_of_range("'" + err + "' must be a positive value");
-		}
+		parse(ac, av);
+		
+		PmergeMe pmerge;
+		// pmerge.fill();
 	}
 	catch (std::exception &e)
 	{
