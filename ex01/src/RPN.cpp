@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 09:08:52 by jmagand           #+#    #+#             */
-/*   Updated: 2026/05/21 14:41:03 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/21 14:58:58 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,33 +40,36 @@ void RPN::process(std::string &arg)
 			if (_values.size() < 2)
 				throw std::runtime_error("Invalid input");
 
-			int b = _values.top();
+			double b = _values.top();
 			_values.pop();
-			int a = _values.top();
+			double a = _values.top();
 			_values.pop();
 
+			double res = 0;
 			if (tmp == "+")
-				_values.push(a + b);
+				res = a + b;
 			else if (tmp == "-")
-				_values.push(a - b);
+				res = a - b;
 			else if (tmp == "*")
-				_values.push(a * b);
+				res = a * b;
 			else if (tmp == "/")
 			{
 				if (b == 0)
-					throw std::runtime_error("'x / 0' is impossible");
-				_values.push(a / b);
+					throw std::runtime_error("Division by zero is impossible");
+				res = a / b;
 			}
+			
+			if (res > static_cast<double>(std::numeric_limits<int>::max()) ||
+				res < static_cast<double>(std::numeric_limits<int>::min()))
+					throw std::out_of_range("Result overflowed.");
+			_values.push(static_cast<int>(res));
 		}
 		else
 		{
-			std::istringstream dss(tmp);
-			double d;
-			dss >> d;
-			if (d > std::numeric_limits<int>::max() ||
-				d < std::numeric_limits<int>::min())
-				throw std::out_of_range("Result overflowed.");
-			_values.push(d);
+			std::istringstream intss(tmp);
+			int x;
+			intss >> x;
+			_values.push(x);
 		}
 	}
 
