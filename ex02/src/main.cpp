@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 15:01:03 by jmagand           #+#    #+#             */
-/*   Updated: 2026/05/21 15:55:45 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/22 10:32:21 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ int main(int ac, char **av)
 		parse(ac, av);
 		
 		PmergeMe pmerge;
-		// pmerge.fill();
+		pmerge.appair(ac - 1, av);
+
+		
 	}
 	catch (std::exception &e)
 	{
