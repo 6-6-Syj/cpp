@@ -6,7 +6,7 @@
 /*   By: jmagand <jmagand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 15:00:52 by jmagand           #+#    #+#             */
-/*   Updated: 2026/05/27 02:15:40 by jmagand          ###   ########.fr       */
+/*   Updated: 2026/05/27 20:59:59 by jmagand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 #include <vector>
 #include <deque>
 
+template <typename T>
 class PmergeMe
 {
 private:
-	std::vector<int> _vec;
-	std::deque<int> _deq;
+	T _container;
 
-	void merge(std::vector<int> &arr, int left, int mid, int right);
-	void mergeSort(std::vector<int> &arr, int left, int right);
-	void print(const std::vector<int> &chain) const;
+	T 		generateInsertionOrder(int pendSize) const;
+	T 		jacobsthalSequence(int n) const;
+	void 	fordJohnsonSort(T &chain);
 
 public:
 	PmergeMe();
@@ -31,10 +31,8 @@ public:
 	PmergeMe &operator=(const PmergeMe &other);
 	~PmergeMe();
 
-	void appair(int n, char **av);
-	std::vector<int> generateInsertionOrder(int pendSize);
-	void binaryInsert(std::vector<int> &insertionOrder, std::vector<int> &main, std::vector<int> &pend, std::vector<int> &partners);
+	const T &getContainer() const;
+	void 	process(int n, char **av);
 };
 
-std::vector<int> jacobsthalSequence(int n);
-void parse(int ac, char **av);
+#include "../src/PmergeMe.tpp"

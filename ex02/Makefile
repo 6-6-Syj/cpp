@@ -10,7 +10,6 @@ OBJ_DIR		:= .build/
 #------------------------------------------------#
 NAME	= 	PmergeMe
 SRC		= 	main.cpp					\
-			PmergeMe.cpp				\
 
 SRCS	= 	$(addprefix $(SRC_DIR), $(SRC))
 
